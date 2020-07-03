@@ -1,0 +1,111 @@
+body {
+    background-image: url("../images/background.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: 50% 50%;
+    background-size: 100% 100%;
+}
+
+.head {
+    text-align: center;
+    position: absolute;
+    width: 100%;
+    color: #fff;
+    background-color: #006179;
+    top: 0px;
+    left: 0px;
+    user-select: none;
+}
+
+.main {
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    top: 20%;
+    left: 50%;
+    margin-left: -250px;
+    border-radius: 30px;
+    background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(6px);
+}
+
+.menu-left {
+    position: absolute;
+    top: 12%;
+    left: 15%;
+}
+
+.menu-left div {
+    background-color: #2ed573;
+    color: #fff;
+    margin-top: 20px;
+    text-align: center;
+    height: 100px;
+    width: 150px;
+    border-radius: 50%;
+    line-height: 100px;
+    transition-duration: 100ms;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.menu-right {
+    position: absolute;
+    top: 12%;
+    right: 15%;
+}
+
+.menu-right div {
+    background-color: #2ed573;
+    color: #fff;
+    margin-top: 20px;
+    text-align: center;
+    height: 100px;
+    width: 150px;
+    border-radius: 50%;
+    line-height: 100px;
+    transition-duration: 100ms;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.menu-left div:hover {
+    cursor: pointer;
+    background-color: #2ed5;
+    color: #2ed573;
+}
+
+.menu-right div:hover {
+    cursor: pointer;
+    background-color: #2ed5;
+    color: #2ed573;
+}
+
+
+/* .client {
+    background-color: lightcoral;
+}
+
+.car {
+    background-color: lightgreen;
+}
+
+.driver {
+    background-color: lightpink;
+}
+
+.rent {
+    background-color: lightsalmon;
+}
+
+.rented {
+    background-color: lightseagreen;
+}
+
+.reserve {
+    background-color: lightsteelblue;
+} */

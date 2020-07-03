@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <link rel="icon" type="image/png" href="images/icon.png">
+    <title>车辆信息表</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/template-web.js"></script>
+    <script type="text/javascript" src="js/dialog.js"></script>
+    <script type="text/javascript" src="js/car.js"></script>
+    <script type="text/template" id="template">
+        {{each list}}
+        <tr>
+            <td>{{$value.carId}}</td>
+            <td>{{$value.carType}}</td>
+            <td>{{$value.carName}}</td>
+            <td>{{$value.carBuyTime}}</td>
+            <td>{{$value.carRentStandard}}</td>
+            <td>{{$value.carState}}</td>
+            <td><a href="javascript:;">修改</a><!--|<a href="javascript:;">删除</a>--></td>
+        </tr>
+        {{/each}}
+    </script>
+</head>
+
+<body>
+    <div class="title">
+        <h1 onmouseover="this.style.cursor='pointer'" onclick="window.location.reload()" title="刷新">车辆信息</h1>
+    </div> 
+    <div class="operation">
+        <input type="text" name="carName" placeholder="按车辆名称查询">
+        <button id="searchCar">查询</button>
+        <button id="addCar">添加</button>
+    </div>
+    <div class="content">
+        <table cellpadding="0" cellspacing="0">
+            <thead>
+                <tr>
+                    <th>车辆编号</th>
+                    <th>车型</th>
+                    <th>车名</th>
+                    <th>车辆购买时间</th>
+                    <th>租金标准（元/天）</th>
+                    <th>租用状态</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody id="dataList">
+
+            </tbody>
+        </table>
+    </div>
+    <form class="form" id="addCarForm">
+        <label class="carId">客辆编号：&emsp;&emsp;</label><input type="text" name="carId"><br>
+        <label>车型：&emsp;&emsp;&emsp;&emsp;</label><input type="text" name="carType"><br>
+        <label>车名：&emsp;&emsp;&emsp;&emsp;</label><input type="text" name="carName"><br>
+        <label>车辆购买时间：</label><input type="date" name="carBuyTime" style="width: 160px;"><br>
+        <label>租金标准：&emsp;&emsp;</label><input type="text" name="carRentStandard" onkeyup="value=value.replace(/[^\d.]/g,'')" placeholder="只允许输入数字和小数点"><span style="margin-left: -6px; color: #777;">（元/天）</span><br>
+        <label>租用状态：&emsp;&emsp;</label>
+        <select name="carState" style="margin-top: 6px; width: 166px; height: 24px; margin-left: -5px;">
+            <option>可出租</option>
+            <option>已租用</option>
+            <option>故障</option>
+        </select><br>
+        <input type="button" value="提交" style="margin-left: 120px; margin-top: 25px;">
+    </form>
+</body>
+
+</html>

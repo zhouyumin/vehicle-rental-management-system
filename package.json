@@ -1,0 +1,17 @@
+{
+  "name": "vehicle",
+  "version": "1.0.0",
+  "description": "汽车租赁管理子系统",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "周余民",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "express-session": "^1.17.1",
+    "mysql": "github:mysqljs/mysql"
+  }
+}

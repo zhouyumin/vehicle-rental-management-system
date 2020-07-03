@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <link rel="icon" type="image/png" href="images/icon.png">
+    <title>客户信息表</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/template-web.js"></script>
+    <script type="text/javascript" src="js/dialog.js"></script>
+    <script type="text/javascript" src="js/client.js"></script>
+    <script type="text/template" id="template">
+        {{each list}}
+        <tr>
+            <td>{{$value.clientId}}</td>
+            <td>{{$value.clientIdCard}}</td>
+            <td>{{$value.clientName}}</td>
+            <td>{{$value.clientSex}}</td>
+            <td>{{$value.clientAge}}</td>
+            <td>{{$value.clientPhone}}</td>
+            <td>{{$value.clientAddress}}</td>
+            <td><a href="javascript:;">修改</a><!--|<a href="javascript:;">删除</a>--></td>
+        </tr>
+        {{/each}}
+    </script>
+</head>
+
+<body>
+    <div class="title">
+        <h1 onmouseover="this.style.cursor='pointer'" onclick="window.location.reload()" title="刷新">客户信息</h1>
+    </div> 
+    <div class="operation">
+        <input type="text" name="clientName" placeholder="按姓名查询">
+        <button id="searchClient">查询</button>
+        <button id="addClient">添加</button>
+    </div>
+    <div class="content">
+        <table cellpadding="0" cellspacing="0">
+            <thead>
+                <tr>
+                    <th>客户编号</th>
+                    <th>身份证号</th>
+                    <th>姓名</th>
+                    <th>性别</th>
+                    <th>年龄</th>
+                    <th>电话</th>
+                    <th>地址</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody id="dataList">
+
+            </tbody>
+        </table>
+    </div>
+    <form class="form" id="addClientForm">
+        <label class="clientId">客户编号：</label><input type="text" name="clientId"><br>
+        <label>身份证：&emsp;</label><input type="text" name="clientIdCard"><br>
+        <label>姓名：&emsp;&emsp;</label><input type="text" name="clientName"><br>
+        <label>性别：&emsp;&emsp;</label><input type="text" name="clientSex"><br>
+        <label>年龄：&emsp;&emsp;</label><input type="text" name="clientAge" onkeyup="value=value.replace(/[^\d]/g,'')" placeholder="只允许输入数字"><br>
+        <label>电话：&emsp;&emsp;</label><input type="text" name="clientPhone"><br>
+        <label>地址：&emsp;&emsp;</label><input type="text" name="clientAddress"><br>
+        <input type="button" value="提交" style="margin-left: 120px; margin-top: 25px;">
+    </form>
+</body>
+
+</html>

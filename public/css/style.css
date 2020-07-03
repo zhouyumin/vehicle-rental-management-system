@@ -1,0 +1,72 @@
+body{
+    background-color: lightblue;
+}
+.title {
+    width: 100%;
+    text-align: center;
+    background-color: #006179;
+    height: 50px;
+    top: 10px;
+    margin-top: 0px;
+    line-height: 50px;
+}
+
+.title h1{
+    position: absolute;
+    left: 50%;
+    margin-left: -62.5px;
+    width: 125px;
+    margin-top: auto;
+    font-size: 28px;
+    color: #fff;
+}
+.operation{
+    position: absolute;
+    right: 20px;
+    top: 5px;
+    height: 50px;
+    line-height: 50px;
+    font-size: 24px;
+}
+
+.operation button{
+    margin-right: 20px;
+    border: none;
+}
+
+.operation button:hover{
+    cursor: pointer;
+}
+
+.operation input{
+    position: absolute;
+    right: 130px;
+    top: 18.5px;
+    width: 100px;
+}
+
+.content table {
+    width: 100%;
+    text-align: center;
+    border-bottom: #2ed573 1px solid;
+    border-right: #2ed573 1px solid;
+}
+
+.content td, .content th {
+    height: 40px;
+    line-height: 40px;
+    border-top: #2ed573 1px solid;
+    border-left: #2ed573 1px solid;
+}
+
+.form {
+    display: none;
+    position: absolute;
+    left: 50%;
+    top: 85px;
+    margin-left: -120px;
+}
+
+.form label, .form input{
+    margin-top: 6px;
+}

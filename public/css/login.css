@@ -1,0 +1,45 @@
+body {
+    background-image: url("../images/bg.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100% 100%;
+    background-attachment: fixed;
+    text-align: center;
+}
+
+.main {
+    position: absolute;
+    width: 400px;
+    height: 160px;
+    left: 50%;
+    top: 50%;
+    margin-left: -200px;
+    margin-top: -100px;
+    border-radius: 30px;
+    background: rgba(255, 255, 255, 0.6);
+    box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+}
+
+.login {
+    padding: 20px;
+}
+
+button {
+    width: 60px;
+    height: 30px;
+    margin-left: 20px;
+    margin-right: 20px;
+    border-radius: 50%;
+    border: none;
+    background: linear-gradient(90deg, rgba(138, 143, 255, 0.75), rgba(216, 174, 255, 0.75));
+    outline: none;
+    box-shadow: 0 0 8px #8a8fff;
+    cursor: pointer;
+}
+
+button:hover {
+    border-radius: 3rem;
+    cursor: pointer;
+    color: rgba(94, 36, 36, 0.6);
+}
