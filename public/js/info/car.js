@@ -32,19 +32,19 @@ $(function () {
 
     //绑定查询操作
     $('#search').click(search)
-    var carNameInput = $('div.operation').find('input[name=carName]')
-    carNameInput.keyup(function (e) {
+    var carIdInput = $('div.operation').find('input[name=carId]')
+    carIdInput.keyup(function (e) {
         if (e.keyCode == 13) {
             search()
         }
     })
     function search() {
-        var carName = carNameInput.val()
-        if (carName == '') {
+        var carId = carIdInput.val()
+        if (carId == '') {
             alert('车名未输入')
         }
         else {
-            initList('/cars/carName/' + carName)
+            initList('/cars/car/' + carId)
         }
     }
 

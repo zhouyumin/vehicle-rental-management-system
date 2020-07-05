@@ -22,9 +22,9 @@ exports.addCar = (req,res)=>{
     })
 }
 //查询车辆信息
-exports.getCarByName=(req,res)=>{
-    let data = req.params.carName
-    let sql = 'select * from carMessage where carName = ?'
+exports.getCarById=(req,res)=>{
+    let data = req.params.carId
+    let sql = 'select * from carMessage where carId = ?'
     db.base(sql,data,(result)=>{
         res.json(result)
     })

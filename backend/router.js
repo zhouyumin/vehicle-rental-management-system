@@ -44,7 +44,7 @@ router.get('/cars',car.getCars)
 //添加车辆信息
 router.post('/cars/car',car.addCar)
 //查询车辆信息
-router.get('/cars/carName/:carName',car.getCarByName)
+router.get('/cars/car/:carId',car.getCarById)
 //修改车辆信息
 router.put('/cars/car',car.editCar)
 
