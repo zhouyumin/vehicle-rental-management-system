@@ -12,10 +12,10 @@ USE vehicle_rental_management_system;
 
 
 -- ----------------------------
--- Table structure for Admin
+-- Table structure for admin
 -- ----------------------------
-DROP TABLE IF EXISTS Admin;
-CREATE TABLE Admin (
+DROP TABLE IF EXISTS admin;
+CREATE TABLE admin (
 	username VARCHAR(20) PRIMARY KEY NOT NULL,
 	passwd VARCHAR(20) NOT NULL 
 );
@@ -23,8 +23,9 @@ CREATE TABLE Admin (
 -- ----------------------------
 -- Records of Admin
 -- ----------------------------
-INSERT INTO Admin VALUES ('admin', 'admin123');
-INSERT INTO Admin VALUES ('test', 'test');
+INSERT INTO admin VALUES ('admin', 'admin123');
+INSERT INTO admin VALUES ('test', 'test');
+
 
 -- ----------------------------
 -- Table structure for carMessage
@@ -48,6 +49,7 @@ INSERT INTO carMessage VALUES ('1A003', '大型车', '五菱宏光', '2019-08-12
 INSERT INTO carMessage VALUES ('1A004', '紧凑型车', '丰田', '2019-09-12', 110, '已租用');
 INSERT INTO carMessage VALUES ('1A005', '大型车', '马自达', '2019-11-12', 120, '已租用');
 INSERT INTO carMessage VALUES ('1A006', '三轮车', '宗申', '2020-05-12', 120, '已租用');
+
 
 -- ----------------------------
 -- Table structure for clientMessage
@@ -96,6 +98,7 @@ INSERT INTO driverMessage VALUES ('D003', '320300************', '李雷', '男',
 INSERT INTO driverMessage VALUES ('D004', '320400************', '杨星', '男', 29, '199****8976', '江苏常州');
 INSERT INTO driverMessage VALUES ('D005', '320500************', '张泽', '女', 27, '178****0796', '江苏苏州');
 
+
 -- ----------------------------
 -- Table structure for rentRecord
 -- ----------------------------
@@ -117,6 +120,7 @@ insert into rentRecord values('00007','C002','1A002','日租','2020-07-01','2020
 insert into rentRecord values('00008','C003','1A003','年租','2019-08-16','2020-08-16');
 insert into rentRecord values('00009','C004','1A004','月租','2019-12-10','2020-06-10');
 insert into rentRecord values('00010','C005','1A005','月租','2020-06-16','2020-07-16');
+
 
 -- ----------------------------
 -- Table structure for returnRecord
@@ -142,6 +146,28 @@ insert into returnRecord values('00004','C004','1A004','月租','2019-09-10','20
 insert into returnRecord values('00005','C005','1A005','月租','2019-11-16','2019-12-16','2019-12-16');
 
 
+-- ----------------------------
+-- Table structure for bookRecord
+-- ----------------------------
+drop table if exists bookRecord;
+create table bookRecord (
+rentId varchar(50) primary key not null,
+clientId varchar(50) references clientMessage(clientId),
+carId varchar(50) references carMessage(carId),
+rentType varchar(20),
+rentFromTime date,
+rentToTime date,
+bookTime date
+);
+
+-- ----------------------------
+-- Records of bookRecord
+-- ----------------------------
+insert into bookRecord values('00011','C001','1A001','日租','2020-8-16','2020-8-20','2020-07-05');
+insert into bookRecord values('00012','C002','1A002','日租','2020-08-01','2020-08-05','2020-05-01');
+insert into bookRecord values('00013','C003','1A003','年租','2020-08-16','2021-08-16','2020-06-29');
+insert into bookRecord values('00014','C004','1A004','月租','2020-8-10','2020-010-10','2020-07-01');
+insert into bookRecord values('00015','C005','1A005','月租','2020-09-16','2022-09-16','2020-06-24');
 
 
 

@@ -1,4 +1,4 @@
-const db = require('./db.js')
+const db = require('../db.js')
 //获得租用记录
 exports.getRecords = (req, res)=>{
     const sql = 'select * from rentRecord order by rentToTime'

@@ -1,7 +1,7 @@
-const db = require('./db.js')
+const db = require('../db.js')
 //获得还车记录
 exports.getReturns = (req, res)=>{
-    const sql = 'select * from returnRecord'
+    const sql = 'select * from returnRecord order by returnTime desc'
     db.base(sql,null,(result)=>{
         res.json(result)
     })

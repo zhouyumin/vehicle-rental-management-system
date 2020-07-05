@@ -1,4 +1,4 @@
-const db = require('./db.js')
+const db = require('../db.js')
 //获得车辆信息表
 exports.getCars = (req, res)=>{
     const sql = 'select * from carMessage'
@@ -21,7 +21,7 @@ exports.addCar = (req,res)=>{
         }
     })
 }
-//获取车辆信息
+//查询车辆信息
 exports.getCarByName=(req,res)=>{
     let data = req.params.carName
     let sql = 'select * from carMessage where carName = ?'

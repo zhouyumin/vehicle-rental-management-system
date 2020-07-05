@@ -2,14 +2,14 @@
 <html lang="zh-CN">
 
 <head>
-    <link rel="icon" type="image/png" href="images/icon.png">
+    <link rel="icon" type="image/png" href="../images/icon.png">
     <title>租用记录</title>
-    <link rel="stylesheet" type="text/css" href="css/style.css">
-    <script type="text/javascript" src="js/jquery.js"></script>
-    <script type="text/javascript" src="js/template-web.js"></script>
-    <script type="text/javascript" src="js/dialog.js"></script>
-    <script type="text/javascript" src="js/record.js"></script>
-    <script type="text/javascript" src="js/today.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/style.css">
+    <script type="text/javascript" src="../js/jquery.js"></script>
+    <script type="text/javascript" src="../js/template-web.js"></script>
+    <script type="text/javascript" src="../js/dialog.js"></script>
+    <script type="text/javascript" src="../js/record/rent.js"></script>
+    <script type="text/javascript" src="../js/today.js"></script>
     <script type="text/template" id="template">
         {{each list}}
         <tr>
@@ -30,7 +30,7 @@
         <h1 onmouseover="this.style.cursor='pointer'" onclick="window.location.reload()" title="刷新">租用记录</h1>
     </div> 
     <div class="operation">
-        <input type="text" name="rentId" placeholder="按订单号查询">
+        <input type="text" name="rentId" placeholder="按订单编号查询">
         <button id="search">查询</button>
     </div>
     <div class="content">

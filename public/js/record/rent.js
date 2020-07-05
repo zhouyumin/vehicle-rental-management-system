@@ -76,7 +76,7 @@ $(function () {
                                 alert('还车成功')
                             }
                             else {
-                                alert('[error]:' + data.sqlMessage)
+                                alert('[error]:' + result.sqlMessage)
                             }
                         },
                         error: function () {
@@ -85,7 +85,7 @@ $(function () {
                     })
                 }
                 else {
-                    alert('[error]:' + data.sqlMessage)
+                    alert('[error]:' + result.sqlMessage)
                 }
             },
             error: function () {

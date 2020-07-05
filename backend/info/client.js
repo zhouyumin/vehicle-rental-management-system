@@ -1,4 +1,4 @@
-const db = require('./db.js')
+const db = require('../db.js')
 //获得客户信息表
 exports.getClients = (req, res)=>{
     const sql = 'select * from clientMessage'
@@ -21,7 +21,7 @@ exports.addClient = (req,res)=>{
         }
     })
 }
-//获取客户信息
+//查询客户信息
 exports.getClientByName=(req,res)=>{
     let data = req.params.clientName
     let sql = 'select * from clientMessage where clientName = ?'
