@@ -23,6 +23,13 @@
         </tr>
         {{/each}}
     </script>
+    <style>
+        #addCarForm label {
+            text-align: center;
+            display: inline-block;
+            width: 112px;
+        }
+    </style>
 </head>
 
 <body>
@@ -53,12 +60,12 @@
         </table>
     </div>
     <form class="form" id="addCarForm">
-        <label class="carId">客辆编号：&emsp;&emsp;</label><input type="text" name="carId"><br>
-        <label>车型：&emsp;&emsp;&emsp;&emsp;</label><input type="text" name="carType"><br>
-        <label>车名：&emsp;&emsp;&emsp;&emsp;</label><input type="text" name="carName"><br>
+        <label class="carId">客辆编号：</label><input type="text" name="carId"><br>
+        <label>车型：</label><input type="text" name="carType"><br>
+        <label>车名：</label><input type="text" name="carName"><br>
         <label>车辆购买时间：</label><input type="date" name="carBuyTime" style="width: 160px;"><br>
-        <label>租金标准：&emsp;&emsp;</label><input type="text" name="carRentStandard" onkeyup="value=value.replace(/[^\d.]/g,'')" placeholder="只允许输入数字和小数点"><span style="margin-left: -6px; color: #777;">（元/天）</span><br>
-        <label>租用状态：&emsp;&emsp;</label>
+        <label>租金标准：</label><input type="text" name="carRentStandard" onkeyup="value=value.replace(/[^\d.]/g,'')" placeholder="只允许输入数字和小数点"><span style="margin-left: -6px; color: #777;">（元/天）</span><br>
+        <label>租用状态：</label>
         <select name="carState" style="margin-top: 6px; width: 166px; height: 24px; margin-left: -5px;">
             <option>可出租</option>
             <option>已租用</option>

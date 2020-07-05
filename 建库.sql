@@ -12,10 +12,10 @@ USE vehicle_rental_management_system;
 
 
 -- ----------------------------
--- Table structure for admin
+-- Table structure for Admin
 -- ----------------------------
-DROP TABLE IF EXISTS admin;
-CREATE TABLE admin (
+DROP TABLE IF EXISTS Admin;
+CREATE TABLE Admin (
 	username VARCHAR(20) PRIMARY KEY NOT NULL,
 	passwd VARCHAR(20) NOT NULL 
 );
@@ -23,8 +23,8 @@ CREATE TABLE admin (
 -- ----------------------------
 -- Records of Admin
 -- ----------------------------
-INSERT INTO admin VALUES ('admin', 'admin123');
-INSERT INTO admin VALUES ('test', 'test');
+INSERT INTO Admin VALUES ('admin', 'admin123');
+INSERT INTO Admin VALUES ('test', 'test');
 
 
 -- ----------------------------
