@@ -7,7 +7,7 @@ $(function () {
             dataType: 'json',
             success: function (data) {
                 if (data == '') {
-                    alert('车辆信息为空')
+                    alert('司机信息为空')
                 }
                 // 渲染数据列表
                 var html = template('template', { list: data })
@@ -16,59 +16,58 @@ $(function () {
 
                 //绑定操作事件
                 $('#dataList').find('tr').each(function (index, element) {
-                    const td = $(element).find('td:eq(6)')
-                    //绑定修改车辆信息操作
+                    const td = $(element).find('td:eq(7)')
+                    //绑定修改司机信息操作
                     td.find('a:eq(0)').click(function () {
-                        editcar(element)
+                        editDriver(element)
                     })
                 })
 
-                //绑定添加车辆信息操作
-                addcar()
+                //绑定添加司机信息操作
+                addDriver()
             }
         })
     }
-    initList('/cars')
+    initList('/drivers')
 
     //绑定查询操作
     $('#search').click(search)
-    var carNameInput = $('div.operation').find('input[name=carName]')
-    carNameInput.keyup(function (e) {
+    var driverNameInput = $('div.operation').find('input[name=driverName]')
+    driverNameInput.keyup(function (e) {
         if (e.keyCode == 13) {
             search()
         }
     })
     function search() {
-        var carName = carNameInput.val()
-        if (carName == '') {
-            alert('车名未输入')
+        var driverName = driverNameInput.val()
+        if (driverName == '') {
+            alert('姓名未输入')
         }
         else {
-            initList('/cars/carName/' + carName)
+            initList('/drivers/driverName/' + driverName)
         }
     }
 
-    //添加车辆信息
-    function addcar() {
-        $('#addCar').click(function () {
+    //添加司机信息
+    function addDriver() {
+        $('#addDriver').click(function () {
             //重置表单
             clearForm()
-            var form = $('#addCarForm')
-            form.find('input[name=carBuyTime]').val(today())
+            var form = $('#addDriverForm')
             //初始化弹窗
-            var mark = new MarkBox(600, 400, '添加车辆', form.get(0))
+            var mark = new MarkBox(600, 400, '添加司机', form.get(0))
             mark.init()
             //绑定添加事件
             form.find('input[type=button]').unbind('click').click(function () {
                 $.ajax({
                     type: 'post',
-                    url: '/cars/car',
+                    url: '/drivers/driver',
                     data: form.serialize(),
                     dataType: 'json',
                     success: function (data) {
                         if (data.flag == 1) {
                             mark.close()
-                            initList('cars')
+                            initList('drivers')
                             alert('添加成功')
                         }
                         else {
@@ -81,37 +80,39 @@ $(function () {
         })
     }
 
-    //编辑车辆信息
-    function editcar(element) {
+    //编辑司机信息
+    function editDriver(element) {
         //重置表单
         clearForm()
-        var form = $('#addCarForm')
+        var form = $('#addDriverForm')
+
         //初始化弹窗
-        var mark = new MarkBox(600, 400, '修改车辆信息', form.get(0))
+        var mark = new MarkBox(600, 400, '修改司机信息', form.get(0))
         mark.init()
-        // $('#dialogTitle').text('修改车辆信息')
+        // $('#dialogTitle').text('修改司机信息')
         //填充表单
         var data = $(element).find('td')
-        const carId = form.find('input[name=carId]')
-        carId.val($(data.get(0)).text())
-        carId.hide()
-        $('label.carId').hide()
-        form.find('input[name=carType]').val($(data.get(1)).text())
-        form.find('input[name=carName]').val($(data.get(2)).text())
-        form.find('input[name=carBuyTime]').val($(data.get(3)).text())
-        form.find('input[name=carRentStandard]').val($(data.get(4)).text())
-        form.find('select[name=carState]').val($(data.get(5)).text())
+        const driverId = form.find('input[name=driverId]')
+        driverId.val($(data.get(0)).text())
+        driverId.hide()
+        $('label.driverId').hide()
+        form.find('input[name=driverIdCard]').val($(data.get(1)).text())
+        form.find('input[name=driverName]').val($(data.get(2)).text())
+        form.find('input[name=driverSex]').val($(data.get(3)).text())
+        form.find('input[name=driverAge]').val($(data.get(4)).text())
+        form.find('input[name=driverPhone]').val($(data.get(5)).text())
+        form.find('input[name=driverAddress]').val($(data.get(6)).text())
         //绑定提交表单数据
         form.find('input[type=button]').unbind('click').click(function () {
             $.ajax({
                 type: 'put',
-                url: '/cars/car',
+                url: '/drivers/driver',
                 data: form.serialize(),
                 dataType: 'json',
                 success: function (data) {
                     if (data.flag == 1) {
                         mark.close()
-                        initList('/cars')
+                        initList('/drivers')
                         alert('修改成功')
                     }
                     else {
@@ -123,12 +124,11 @@ $(function () {
         })
     }
 
-
     //重置表单
     function clearForm() {
-        var form = $('#addCarForm')
+        var form = $('#addDriverForm')
         form.get(0).reset()
-        form.find('input[name=carId]').show()
-        $('label.carId').show()
+        form.find('input[name=driverId]').show()
+        $('label.driverId').show()
     }
 })

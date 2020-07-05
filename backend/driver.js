@@ -1,17 +1,17 @@
 const db = require('./db.js')
-//获得车辆信息表
-exports.getCars = (req, res)=>{
-    const sql = 'select * from carMessage'
+//获得司机信息表
+exports.getDrivers = (req, res)=>{
+    const sql = 'select * from driverMessage'
     db.base(sql,null,(result)=>{
         res.json(result)
     })
 
 }
 
-//添加车辆信息
-exports.addCar = (req,res)=>{
+//添加司机信息
+exports.addDriver = (req,res)=>{
     let info = req.body
-    let sql = 'insert into carMessage set ?'
+    let sql = 'insert into driverMessage set ?'
     db.base(sql , info,(result)=>{
         if(result.affectedRows == 1){
             res.json({flag:1})
@@ -21,20 +21,20 @@ exports.addCar = (req,res)=>{
         }
     })
 }
-//获取车辆信息
-exports.getCarByName=(req,res)=>{
-    let data = req.params.carName
-    let sql = 'select * from carMessage where carName = ?'
+//获取司机信息
+exports.getDriverByName=(req,res)=>{
+    let data = req.params.driverName
+    let sql = 'select * from driverMessage where driverName = ?'
     db.base(sql,data,(result)=>{
         res.json(result)
     })
 }
 
-//修改车辆信息
-exports.editCar = (req,res)=>{
+//修改司机信息
+exports.editDriver = (req,res)=>{
     let info = req.body
-    let sql = 'update carMessage set ? where carId=?'
-    db.base(sql , [info,info.carId],(result)=>{
+    let sql = 'update driverMessage set ? where driverId=?'
+    db.base(sql , [info,info.driverId],(result)=>{
         if(result.affectedRows == 1){
             res.json({flag:1})
         }

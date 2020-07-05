@@ -23,13 +23,11 @@ body{
 .operation{
     position: absolute;
     right: 20px;
-    top: 5px;
-    height: 50px;
-    line-height: 50px;
-    font-size: 24px;
+    top: 21.1px;
 }
 
 .operation button{
+    padding-top: 0px;
     margin-right: 20px;
     border: none;
 }
@@ -39,9 +37,8 @@ body{
 }
 
 .operation input{
-    position: absolute;
-    right: 130px;
-    top: 18.5px;
+    line-height: 18.4px;
+    border: none;
     width: 100px;
 }
 

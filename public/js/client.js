@@ -6,8 +6,8 @@ $(function () {
             url: url,
             dataType: 'json',
             success: function (data) {
-                if(data == ''){
-                    alert('信息为空')
+                if (data == '') {
+                    alert('客户信息为空')
                 }
                 // 渲染数据列表
                 var html = template('template', { list: data })
@@ -17,10 +17,9 @@ $(function () {
                 //绑定操作事件
                 $('#dataList').find('tr').each(function (index, element) {
                     const td = $(element).find('td:eq(7)')
-                    const clientId = $(element).find('td:eq(0)').text()
                     //绑定修改客户信息操作
                     td.find('a:eq(0)').click(function () {
-                        editClient(clientId)
+                        editClient(element)
                     })
                     // //绑定删除客户信息操作
                     // td.find('a:eq(1)').click(function () {
@@ -36,15 +35,21 @@ $(function () {
     initList('/clients')
 
     //绑定查询操作
-    search()
-    function search () {
-        $('#searchClient').click(function(){
-            var clientName = $('div.operation').find('input[name=clientName]').val()
-            if(clientName ==''){
-                alert('姓名未输入')
-            }
-            initList('/clients/clientName/'+clientName)
-        })
+    $('#search').click(search)
+    var clientNameInput = $('div.operation').find('input[name=clientName]')
+    clientNameInput.keyup(function (e) {
+        if (e.keyCode == 13) {
+            search()
+        }
+    })
+    function search() {
+        var clientName = clientNameInput.val()
+        if (clientName == '') {
+            alert('姓名未输入')
+        }
+        else {
+            initList('/clients/clientName/' + clientName)
+        }
     }
 
     //添加客户信息
@@ -81,52 +86,45 @@ $(function () {
     }
 
     //编辑客户信息
-    function editClient(clientId) {
+    function editClient(element) {
         //重置表单
         clearForm()
         var form = $('#addClientForm')
-        $.ajax({
-            type: 'get',
-            url: '/clients/client/' + clientId,
-            dataType: 'json',
-            success: function (result) {
-                //初始化弹窗
-                var mark = new MarkBox(600, 400, '修改客户信息', form.get(0))
-                mark.init()
-                // $('#dialogTitle').text('修改客户信息')
-                //填充表单
-                var data = result[0]
-                const clientId = form.find('input[name=clientId]')
-                clientId.val(data.clientId)
-                clientId.hide()
-                $('label.clientId').hide()
-                form.find('input[name=clientIdCard]').val(data.clientIdCard)
-                form.find('input[name=clientName]').val(data.clientName)
-                form.find('input[name=clientSex]').val(data.clientSex)
-                form.find('input[name=clientAge]').val(data.clientAge)
-                form.find('input[name=clientPhone]').val(data.clientPhone)
-                form.find('input[name=clientAddress]').val(data.clientAddress)
-                //绑定提交表单数据
-                form.find('input[type=button]').unbind('click').click(function () {
-                    $.ajax({
-                        type: 'put',
-                        url: '/clients/client',
-                        data: form.serialize(),
-                        dataType: 'json',
-                        success: function (data) {
-                            if (data.flag == 1) {
-                                mark.close()
-                                initList('/clients')
-                                alert('修改成功')
-                            }
-                            else {
-                                mark.close()
-                                alert('[error]:' + data.sqlMessage)
-                            }
-                        }
-                    })
-                })
-            }
+        //初始化弹窗
+        var mark = new MarkBox(600, 400, '修改客户信息', form.get(0))
+        mark.init()
+        // $('#dialogTitle').text('修改客户信息')
+        //填充表单
+        var data = $(element).find('td')
+        const clientId = form.find('input[name=clientId]')
+        clientId.val($(data.get(0)).text())
+        clientId.hide()
+        $('label.clientId').hide()
+        form.find('input[name=clientIdCard]').val($(data.get(1)).text())
+        form.find('input[name=clientName]').val($(data.get(2)).text())
+        form.find('input[name=clientSex]').val($(data.get(3)).text())
+        form.find('input[name=clientAge]').val($(data.get(4)).text())
+        form.find('input[name=clientPhone]').val($(data.get(5)).text())
+        form.find('input[name=clientAddress]').val($(data.get(6)).text())
+        //绑定提交表单数据
+        form.find('input[type=button]').unbind('click').click(function () {
+            $.ajax({
+                type: 'put',
+                url: '/clients/client',
+                data: form.serialize(),
+                dataType: 'json',
+                success: function (data) {
+                    if (data.flag == 1) {
+                        mark.close()
+                        initList('/clients')
+                        alert('修改成功')
+                    }
+                    else {
+                        mark.close()
+                        alert('[error]:' + data.sqlMessage)
+                    }
+                }
+            })
         })
     }
     // //删除客户信息

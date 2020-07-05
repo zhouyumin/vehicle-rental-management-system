@@ -4,108 +4,79 @@ body {
     background-attachment: fixed;
     background-position: 50% 50%;
     background-size: 100% 100%;
+    margin: 0px;
 }
 
 .head {
     text-align: center;
-    position: absolute;
-    width: 100%;
     color: #fff;
-    background-color: #006179;
     top: 0px;
     left: 0px;
     user-select: none;
 }
 
+.head h1{
+    color: #f4f4f4;
+    margin: 21px;
+}
+
 .main {
-    position: absolute;
-    width: 500px;
-    height: 500px;
-    top: 20%;
-    left: 50%;
-    margin-left: -250px;
+    position: relative;
+    width: 70%;
+    height: 450px;
+    top: 73px;
+    left:15%;
     border-radius: 30px;
-    background-color: rgba(0, 0, 0, 0.6);
+    background-color: rgba(0, 0, 0, 0.66);
     backdrop-filter: blur(6px);
 }
 
-.menu-left {
-    position: absolute;
-    top: 12%;
-    left: 15%;
+.menu{
+    position: relative;
+    text-align: center;
+    width: 20%;
+    top: 60px;
+    height: 440px;
+    user-select: none;
 }
 
-.menu-left div {
-    background-color: #2ed573;
-    color: #fff;
-    margin-top: 20px;
-    text-align: center;
-    height: 100px;
-    width: 150px;
-    border-radius: 50%;
-    line-height: 100px;
-    transition-duration: 100ms;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
+.menu h2{
+    color: #00f4f4cc;
+    margin: 0px;
+    width: 100%;
+    padding-top: 20px;
+}
+
+.menu-left {
+    left: 10%;
+}
+
+.menu-middle {
+    margin-top: -440px;
+    left: 40%;
 }
 
 .menu-right {
-    position: absolute;
-    top: 12%;
-    right: 15%;
+    margin-top: -440px;
+    left: 70%;
 }
 
-.menu-right div {
+.menu-left div, .menu-middle div, .menu-right div {
+    position: relative;
     background-color: #2ed573;
     color: #fff;
     margin-top: 20px;
-    text-align: center;
-    height: 100px;
-    width: 150px;
+    height: 80px;
+    line-height: 80px;
+    width: 100px;
+    left: 50%;
+    margin-left: -50px;
     border-radius: 50%;
-    line-height: 100px;
     transition-duration: 100ms;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
 }
 
-.menu-left div:hover {
+.menu-left div:hover, .menu-middle div:hover, .menu-right div:hover {
     cursor: pointer;
     background-color: #2ed5;
     color: #2ed573;
 }
-
-.menu-right div:hover {
-    cursor: pointer;
-    background-color: #2ed5;
-    color: #2ed573;
-}
-
-
-/* .client {
-    background-color: lightcoral;
-}
-
-.car {
-    background-color: lightgreen;
-}
-
-.driver {
-    background-color: lightpink;
-}
-
-.rent {
-    background-color: lightsalmon;
-}
-
-.rented {
-    background-color: lightseagreen;
-}
-
-.reserve {
-    background-color: lightsteelblue;
-} */

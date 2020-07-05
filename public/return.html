@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <link rel="icon" type="image/png" href="images/icon.png">
+    <title>还车记录</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/template-web.js"></script>
+    <script type="text/javascript" src="js/dialog.js"></script>
+    <script type="text/javascript" src="js/return.js"></script>
+    <script type="text/template" id="template">
+        {{each list}}
+        <tr>
+            <td>{{$value.rentId}}</td>
+            <td>{{$value.clientId}}</td>
+            <td>{{$value.carId}}</td>
+            <td>{{$value.rentType}}</td>
+            <td>{{$value.rentFromTime}}</td>
+            <td>{{$value.rentToTime}}</td>
+            <td>{{$value.returnTime}}</td>
+        </tr>
+        {{/each}}
+    </script>
+</head>
+
+<body>
+    <div class="title">
+        <h1 onmouseover="this.style.cursor='pointer'" onclick="window.location.reload()" title="刷新">还车记录</h1>
+    </div> 
+    <div class="operation">
+        <input type="text" name="rentId" placeholder="按订单号查询">
+        <button id="search">查询</button>
+    </div>
+    <div class="content">
+        <table cellpadding="0" cellspacing="0">
+            <thead>
+                <tr>
+                    <th>订单编号</th>
+                    <th>客户编号</th>
+                    <th>车辆编号</th>
+                    <th>租赁模式</th>
+                    <th>租赁开始时间</th>
+                    <th>租赁结束时间</th>
+                    <th>还车时间</th>
+                </tr>
+            </thead>
+            <tbody id="dataList">
+
+            </tbody>
+        </table>
+    </div>
+</body>
+
+</html>

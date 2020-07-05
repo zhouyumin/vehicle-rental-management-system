@@ -1,6 +1,9 @@
 const express = require('express')
 const client = require('./client.js')
 const car = require('./car.js')
+const driver = require('./driver.js')
+const record = require('./record.js')
+const returnRecord = require('./return.js')
 const session = require('express-session')
 const service = require('./service.js')
 const bodyparser = require('body-parser')
@@ -29,7 +32,6 @@ router.get('/clients',client.getClients)
 //添加客户信息
 router.post('/clients/client',client.addClient)
 //获取客户信息
-router.get('/clients/client/:clientId',client.getClientById)
 router.get('/clients/clientName/:clientName',client.getClientByName)
 //修改客户信息
 router.put('/clients/client',client.editClient)
@@ -41,9 +43,34 @@ router.get('/cars',car.getCars)
 //添加车辆信息
 router.post('/cars/car',car.addCar)
 //获取车辆信息
-router.get('/cars/car/:carId',car.getCarById)
 router.get('/cars/carName/:carName',car.getCarByName)
 //修改车辆信息
 router.put('/cars/car',car.editCar)
+
+
+//获得司机信息表
+router.get('/drivers',driver.getDrivers)
+//添加司机信息
+router.post('/drivers/driver',driver.addDriver)
+//获取司机信息
+router.get('/drivers/driverName/:driverName',driver.getDriverByName)
+//修改司机信息
+router.put('/drivers/driver',driver.editDriver)
+
+//获得租用记录
+router.get('/records',record.getRecords)
+//查询订单信息
+router.get('/records/record/:rentId',record.getRecordById)
+//还车时删除租用记录
+router.delete('/records/record/:rentId',record.deleteRecord)
+//续租订单
+router.put('/records/record', record.renewTime)
+
+//获得还车记录
+router.get('/returns',returnRecord.getReturns)
+//查询还车记录
+router.get('/returns/return/:rentId',returnRecord.getReturnById)
+//添加还车记录
+router.put('/returns/return',returnRecord.addReturn)
 
 module.exports = router

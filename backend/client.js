@@ -22,14 +22,6 @@ exports.addClient = (req,res)=>{
     })
 }
 //获取客户信息
-exports.getClientById=(req,res)=>{
-    let data = req.params.clientId
-    let sql = 'select * from clientMessage where clientId = ?'
-    db.base(sql,data,(result)=>{
-        res.json(result)
-    })
-}
-
 exports.getClientByName=(req,res)=>{
     let data = req.params.clientName
     let sql = 'select * from clientMessage where clientName = ?'
