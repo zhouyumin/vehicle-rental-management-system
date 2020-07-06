@@ -80,6 +80,8 @@ router.get('/books',book.getBooks)
 router.get('/books/book/:rentId', book.getBookById)
 //履约
 router.put('/books/book/:rentId', book.fulfillBook)
+//添加预约记录
+router.post('/books/book',book.addBook)
 //修改预约记录
 router.put('/books/book',book.editBook)
 //删除预约记录

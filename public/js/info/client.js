@@ -72,7 +72,7 @@ $(function () {
                     success: function (data) {
                         if (data.flag == 1) {
                             mark.close()
-                            initList('clients')
+                            initList('/clients')
                             alert('添加成功')
                         }
                         else {
@@ -96,10 +96,7 @@ $(function () {
         // $('#dialogTitle').text('修改客户信息')
         //填充表单
         var data = $(element).find('td')
-        const clientId = form.find('input[name=clientId]')
-        clientId.val($(data.get(0)).text())
-        clientId.hide()
-        $('label.clientId').hide()
+        const clientId = $(data.get(0)).text()
         form.find('input[name=clientIdCard]').val($(data.get(1)).text())
         form.find('input[name=clientName]').val($(data.get(2)).text())
         form.find('input[name=clientSex]').val($(data.get(3)).text())
@@ -111,7 +108,7 @@ $(function () {
             $.ajax({
                 type: 'put',
                 url: '/clients/client',
-                data: form.serialize(),
+                data: form.serialize()+'&clientId='+clientId,
                 dataType: 'json',
                 success: function (data) {
                     if (data.flag == 1) {
@@ -151,7 +148,5 @@ $(function () {
     function clearForm() {
         var form = $('#addClientForm')
         form.get(0).reset()
-        form.find('input[name=clientId]').show()
-        $('label.clientId').show()
     }
 })

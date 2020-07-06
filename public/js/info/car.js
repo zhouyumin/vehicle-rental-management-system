@@ -68,7 +68,7 @@ $(function () {
                     success: function (data) {
                         if (data.flag == 1) {
                             mark.close()
-                            initList('cars')
+                            initList('/cars')
                             alert('添加成功')
                         }
                         else {
@@ -92,10 +92,7 @@ $(function () {
         // $('#dialogTitle').text('修改车辆信息')
         //填充表单
         var data = $(element).find('td')
-        const carId = form.find('input[name=carId]')
-        carId.val($(data.get(0)).text())
-        carId.hide()
-        $('label.carId').hide()
+        const carId = $(data.get(0)).text()
         form.find('input[name=carType]').val($(data.get(1)).text())
         form.find('input[name=carName]').val($(data.get(2)).text())
         form.find('input[name=carBuyTime]').val($(data.get(3)).text())
@@ -106,7 +103,7 @@ $(function () {
             $.ajax({
                 type: 'put',
                 url: '/cars/car',
-                data: form.serialize(),
+                data: form.serialize()+'&carId='+carId,
                 dataType: 'json',
                 success: function (data) {
                     if (data.flag == 1) {
@@ -128,7 +125,5 @@ $(function () {
     function clearForm() {
         var form = $('#addCarForm')
         form.get(0).reset()
-        form.find('input[name=carId]').show()
-        $('label.carId').show()
     }
 })

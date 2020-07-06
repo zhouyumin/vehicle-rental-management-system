@@ -32,6 +32,20 @@ exports.fulfillBook=(req,res)=>{
     })
 }
 
+//添加预约记录
+exports.addBook=(req,res)=>{
+    let info = req.body
+    let sql = 'insert into bookRecord set ?'
+    db.base(sql , info,(result)=>{
+        if(result.affectedRows == 1){
+            res.json({flag:1})
+        }
+        else{
+            res.json(result.error)
+        }
+    })
+}
+
 //修改预约记录
 exports.editBook=(req,res)=>{
     let data = req.body

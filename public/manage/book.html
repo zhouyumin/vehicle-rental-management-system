@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <title>预约车辆</title>
+    <link rel="icon" type="image/png" href="../images/icon.png">
+    <link rel="stylesheet" type="text/css" href="../css/style.css">
+    <style>
+        #bookForm label {
+            display: inline-block;
+            text-align: center;
+            width: 144px;
+        }
+
+        #bookForm input {
+            margin-top: 6px;
+        }
+    </style>
+    <script type="text/javascript" src="../js/jquery.js"></script>
+    <script type="text/javascript" src="../js/today.js"></script>
+    <script type="text/javascript" src="../js/manage/book.js"></script>
+</head>
+
+<body>
+    <div class="main">
+        <form id="bookForm">
+            <label>客户编号：</label><input type="text" name="clientId"><br>
+            <label>车辆编号：</label><input type="text" name="carId"><br>
+            <label>租赁模式：</label>
+            <select name="rentType" style="margin-top: 6px; width: 166px; height: 24px; margin-left: -5px;">
+                <option>日租</option>
+                <option>月租</option>
+                <option>年租</option>
+            </select><br>
+            <label>预约租赁开始时间：</label><input type="date" name="rentFromTime" style="width: 160px;"><br>
+            <label>预约租赁结束时间：</label><input type="date" name="rentToTime" style="width: 160px;"><br>
+            <input type="text" hidden name="bookTime">
+            <input type="button" value="提交" style="margin-left: 120px; margin-top: 23px;">
+        </form>
+    </div>
+</body>
+
+</html>

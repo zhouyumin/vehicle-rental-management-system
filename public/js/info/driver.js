@@ -67,7 +67,7 @@ $(function () {
                     success: function (data) {
                         if (data.flag == 1) {
                             mark.close()
-                            initList('drivers')
+                            initList('/drivers')
                             alert('添加成功')
                         }
                         else {
@@ -92,10 +92,7 @@ $(function () {
         // $('#dialogTitle').text('修改司机信息')
         //填充表单
         var data = $(element).find('td')
-        const driverId = form.find('input[name=driverId]')
-        driverId.val($(data.get(0)).text())
-        driverId.hide()
-        $('label.driverId').hide()
+        const driverId = $(data.get(0)).text()
         form.find('input[name=driverIdCard]').val($(data.get(1)).text())
         form.find('input[name=driverName]').val($(data.get(2)).text())
         form.find('input[name=driverSex]').val($(data.get(3)).text())
@@ -107,7 +104,7 @@ $(function () {
             $.ajax({
                 type: 'put',
                 url: '/drivers/driver',
-                data: form.serialize(),
+                data: form.serialize()+'&driverId='+driverId,
                 dataType: 'json',
                 success: function (data) {
                     if (data.flag == 1) {
@@ -128,7 +125,5 @@ $(function () {
     function clearForm() {
         var form = $('#addDriverForm')
         form.get(0).reset()
-        form.find('input[name=driverId]').show()
-        $('label.driverId').show()
     }
 })

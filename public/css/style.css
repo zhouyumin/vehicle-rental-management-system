@@ -67,3 +67,13 @@ body{
 .form label, .form input{
     margin-top: 6px;
 }
+
+.main {
+    position: absolute;
+    width: 310px;
+    height: 222px;
+    margin-top: -111px;
+    margin-left: -155px;
+    left: 50%;
+    top: 50%;
+}
