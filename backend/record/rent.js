@@ -44,3 +44,17 @@ exports.renewTime = (req,res)=>{
         }
     })
 }
+
+//添加订单
+exports.addRecord=(req,res)=>{
+    let info = req.body
+    let sql = 'insert into rentRecord set ?'
+    db.base(sql , info,(result)=>{
+        if(result.affectedRows == 1){
+            res.json({flag:1})
+        }
+        else{
+            res.json(result.error)
+        }
+    })
+}

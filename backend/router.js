@@ -66,6 +66,8 @@ router.get('/records/record/:rentId',rent.getRecordById)
 router.delete('/records/record/:rentId',rent.deleteRecord)
 //续租订单
 router.put('/records/record', rent.renewTime)
+//添加租用记录
+router.post('/records/record/',rent.addRecord)
 
 //获得还车记录
 router.get('/returns',returnRecord.getReturns)
