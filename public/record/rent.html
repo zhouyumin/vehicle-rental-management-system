@@ -5,6 +5,11 @@
     <link rel="icon" type="image/png" href="../images/icon.png">
     <title>租用记录</title>
     <link rel="stylesheet" type="text/css" href="../css/style.css">
+    <style>
+        #dataList a{
+            margin: 5px;
+        }
+    </style>
     <script type="text/javascript" src="../js/jquery.js"></script>
     <script type="text/javascript" src="../js/template-web.js"></script>
     <script type="text/javascript" src="../js/dialog.js"></script>
@@ -19,7 +24,7 @@
             <td>{{$value.rentType}}</td>
             <td>{{$value.rentFromTime}}</td>
             <td>{{$value.rentToTime}}</td>
-            <td><a href="javascript:;">还车</a>&ensp;<a href="javascript:;">续租</a>&ensp;<a href="javascript:;">催车</a></td>
+            <td><a href="javascript:;">还车</a><a href="javascript:;">续租</a><a href="javascript:;">催车</a></td>
         </tr>
         {{/each}}
     </script>

@@ -5,10 +5,21 @@
     <link rel="icon" type="image/png" href="../images/icon.png">
     <title>预约记录</title>
     <link rel="stylesheet" type="text/css" href="../css/style.css">
+    <style>
+        #dataList a{
+            margin: 5px;
+        }
+        .form label{
+            display: inline-block;
+            text-align: center;
+            width: 144px;
+        }
+    </style>
     <script type="text/javascript" src="../js/jquery.js"></script>
     <script type="text/javascript" src="../js/template-web.js"></script>
     <script type="text/javascript" src="../js/dialog.js"></script>
     <script type="text/javascript" src="../js/record/book.js"></script>
+    <script type="text/javascript" src="../js/today.js"></script>
     <script type="text/template" id="template">
         {{each list}}
         <tr>
@@ -19,7 +30,7 @@
             <td>{{$value.rentFromTime}}</td>
             <td>{{$value.rentToTime}}</td>
             <td>{{$value.bookTime}}</td>
-            <td><a href="javascript:;">履约</a>
+            <td><a href="javascript:;">履约</a><a href="javascript:;">修改</a><a href="javascript:;">取消</a></td>
         </tr>
         {{/each}}
     </script>
@@ -52,6 +63,20 @@
             </tbody>
         </table>
     </div>
+    <form class="form" id="editBookForm">
+        <input type="text" hidden name="rentId">
+        <label>车辆编号：</label><input type="text" name="carId"><br>
+        <label>租赁模式：</label>
+        <select name="rentType" style="margin-top: 6px; width: 166px; height: 24px; margin-left: -5px;">
+            <option>日租</option>
+            <option>月租</option>
+            <option>年租</option>
+        </select><br>
+        <label>预约租赁开始时间：</label><input type="date" name="rentFromTime" style="width: 160px;"><br>
+        <label>预约租赁结束时间：</label><input type="date" name="rentToTime" style="width: 160px;"><br>
+        <input type="text" hidden name="bookTime">
+        <input type="button" value="提交" style="margin-left: 120px; margin-top: 23px;">
+    </form>
 </body>
 
 </html>

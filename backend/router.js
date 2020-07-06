@@ -80,7 +80,9 @@ router.get('/books',book.getBooks)
 router.get('/books/book/:rentId', book.getBookById)
 //履约
 router.put('/books/book/:rentId', book.fulfillBook)
-//履约时删除预约记录
+//修改预约记录
+router.put('/books/book',book.editBook)
+//删除预约记录
 router.delete('/books/book/:rentId', book.deleteBook)
 
 module.exports = router

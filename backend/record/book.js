@@ -32,7 +32,21 @@ exports.fulfillBook=(req,res)=>{
     })
 }
 
-//履约成功删除预约记录
+//修改预约记录
+exports.editBook=(req,res)=>{
+    let data = req.body
+    let sql = 'update bookRecord set ? where rentId = ?'
+    db.base(sql,[data,data.rentId],(result)=>{
+        if(result.affectedRows == 1){
+            res.json({flag:1})
+        }
+        else{
+            res.json(result.error)
+        }
+    })
+}
+
+//删除预约记录
 exports.deleteBook=(req,res)=>{
     let rentId = req.params.rentId
     let sql = 'delete from bookRecord where rentId = ?'
