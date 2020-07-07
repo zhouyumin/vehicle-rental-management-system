@@ -133,17 +133,18 @@ carId varchar(50) references carMessage(carId),
 rentType varchar(20),
 rentFromTime date,
 rentToTime date,
-returnTime date
+returnTime date,
+rentMoney decimal(10,2)
 );
 
 -- ----------------------------
 -- Records of returnRecord
 -- ----------------------------
-insert into returnRecord values('11001','10001','11001','日租','2018-10-16','2018-10-20','2018-10-20');
-insert into returnRecord values('11002','10002','11002','日租','2019-10-16','2019-10-20','2019-10-20');
-insert into returnRecord values('11003','10003','11003','年租','2019-08-16','2019-08-16','2019-08-16');
-insert into returnRecord values('11004','10004','11004','月租','2019-09-10','2019-11-10','2019-11-10');
-insert into returnRecord values('11005','10005','11005','月租','2019-11-16','2019-12-16','2019-12-16');
+insert into returnRecord values('11001','10001','11001','日租','2018-10-16','2018-10-20','2018-10-20',400.00);
+insert into returnRecord values('11002','10002','11002','日租','2019-10-16','2019-10-20','2019-10-20',320.00);
+insert into returnRecord values('11003','10003','11003','年租','2019-08-16','2020-08-16','2019-08-16',43920.00);
+insert into returnRecord values('11004','10004','11004','月租','2019-09-10','2019-11-10','2019-11-10',6710.00);
+insert into returnRecord values('11005','10005','11005','月租','2019-11-16','2019-12-16','2019-12-16',3600.00);
 
 
 -- ----------------------------
