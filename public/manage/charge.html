@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/png" href="../images/icon.png">
+    <link rel="stylesheet" type="text/css" href="../css/style.css">
+    <script type="text/javascript" src="../js/jquery.js"></script>
+    <script type="text/javascript" src="../js/today.js"></script>
+    <script type="text/javascript" src="../js/manage/charge.js"></script>
+    <script type="text/javascript" src="../js/Chart.js"></script>
+    <title>租金统计</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="todayMoney">
+            <label>今日租金：</label>
+            <label id="rentMoney"></label>
+        </div>
+        <label>按时间段统计</label><br>
+        <form id="timeInput">
+            <label>从</label> <input type="date" name="fromTime">
+            <label>到</label> <input type="date" name="toTime">
+        </form>
+        <label>总租金：</label><label id="sumMoney"></label>
+        <div class="graphic">
+            <label>租金统计图表</label>
+            <canvas id='chart'></canvas>
+        </div>
+    </div>
+</body>
+
+</html>

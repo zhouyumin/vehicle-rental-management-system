@@ -52,3 +52,17 @@ exports.addReturn = (req, res) => {
         }
     })
 }
+
+//查询租金
+exports.getMoney = (req, res) => {
+    let info = req.params
+    const sql = 'select returnTime,rentMoney from returnRecord\
+    where returnTime between ? and ? order by returnTime'
+    db.base(sql, [info.rentFromTime,info.rentToTime], (result) => {
+        result.forEach(element => {
+            element.rentMoney = getFloatStr(element.rentMoney)
+        });
+        res.json(result)
+    })
+
+}

@@ -75,6 +75,8 @@ router.get('/returns',returnRecord.getReturns)
 router.get('/returns/return/:rentId',returnRecord.getReturnById)
 //添加还车记录
 router.put('/returns/return',returnRecord.addReturn)
+//获得租金
+router.get('/returns/money/:rentFromTime/:rentToTime',returnRecord.getMoney)
 
 //获得预约记录
 router.get('/books',book.getBooks)
