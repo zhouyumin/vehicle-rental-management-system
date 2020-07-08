@@ -19,15 +19,16 @@ exports.getBookById=(req,res)=>{
 
 //履约
 exports.fulfillBook=(req,res)=>{
-    let rentId = req.params.rentId
-    let sql = 'insert into rentRecord select rentId, clientId, \
-    carId, rentType, rentFromTime, rentToTime from bookRecord where rentId = ?'
-    db.base(sql ,rentId,(result)=>{
-        if(result.affectedRows == 1){
+    let info = req.params
+    let sql = `insert into rentRecord select rentId, clientId, \
+    carId, ?, rentType, rentFromTime, rentToTime from bookRecord where rentId = ?;\
+    update driverMessage set driverState='已接单' where driverId=?`
+    db.base(sql ,[info.driverId,info.rentId,info.driverId],(result)=>{
+        if(result[0].affectedRows == 1){
             res.json({flag:1})
         }
         else{
-            res.json(result.error)
+            res.json(result[0].error)
         }
     })
 }

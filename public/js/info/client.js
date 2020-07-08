@@ -99,7 +99,7 @@ $(function () {
         const clientId = $(data.get(0)).text()
         form.find('input[name=clientIdCard]').val($(data.get(1)).text())
         form.find('input[name=clientName]').val($(data.get(2)).text())
-        form.find('input[name=clientSex]').val($(data.get(3)).text())
+        form.find('select[name=clientSex]').val($(data.get(3)).text())
         form.find('input[name=clientAge]').val($(data.get(4)).text())
         form.find('input[name=clientPhone]').val($(data.get(5)).text())
         form.find('input[name=clientAddress]').val($(data.get(6)).text())

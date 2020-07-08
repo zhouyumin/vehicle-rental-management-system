@@ -19,6 +19,7 @@
             <td>{{$value.driverAge}}</td>
             <td>{{$value.driverPhone}}</td>
             <td>{{$value.driverAddress}}</td>
+            <td>{{$value.driverState}}</td>
             <td><a href="javascript:;">修改</a><!--|<a href="javascript:;">删除</a>--></td>
         </tr>
         {{/each}}
@@ -52,6 +53,7 @@
                     <th>年龄</th>
                     <th>电话</th>
                     <th>地址</th>
+                    <th>状态</th>
                     <th>操作</th>
                 </tr>
             </thead>
@@ -72,6 +74,12 @@
         <label>年龄：</label><input type="text" name="driverAge" onkeyup="value=value.replace(/[^\d]/g,'')" placeholder="只允许输入数字"><br>
         <label>电话：</label><input type="text" name="driverPhone"><br>
         <label>地址：</label><input type="text" name="driverAddress"><br>
+        <label>状态：</label>
+        <select name="driverState" style="margin-top: 6px; width: 166px; height: 24px; margin-left: -5px;">
+            <option>未接单</option>
+            <option>已接单</option>
+            <option>未出勤</option>
+        </select><br>
         <input type="button" value="提交" style="margin-left: 120px; margin-top: 25px;">
     </form>
 </body>

@@ -23,12 +23,12 @@ $(function () {
                         fulfill(rentId)
                     })
                     //绑定修改操作
-                    td.find('a:eq(1)').click(function(){
-                        editBook(element,rentId)
+                    td.find('a:eq(1)').click(function () {
+                        editBook(element, rentId)
                     })
                     //绑定取消操作
-                    td.find('a:eq(2)').click(function(){
-                        cancel(rentId,'cancel')
+                    td.find('a:eq(2)').click(function () {
+                        cancel(rentId, 'cancel')
                     })
                 })
             }
@@ -54,44 +54,49 @@ $(function () {
         }
     }
     function fulfill(rentId) {
+        var driverId = prompt('请分配司机，输入司机编号')
+        if(driverId==null||driverId==''){
+            alert('司机未分配，无法履行订单')
+            return
+        }
         $.ajax({
             type: 'put',
-            url: '/books/book/'+rentId,
+            url: '/books/book/' + rentId + '/' + driverId,
             dataType: 'json',
-            success: function(result){
-                if(result.flag==1){
-                    cancel(rentId,'delete')
+            success: function (result) {
+                if (result.flag == 1) {
+                    cancel(rentId, 'delete')
                 }
                 else {
                     alert('[error]:' + result.sqlMessage)
                 }
             },
-            error: function(){
+            error: function () {
                 alert('error')
             }
         })
     }
     //修改操作
-    function editBook(element,rentId){
+    function editBook(element, rentId) {
         var form = $('#editBookForm')
         var data = $(element).find('td')
         //填充表单
         form.find('input[name=rentId]').val($(data.get(0)).text())
         form.find('input[name=carId]').val($(data.get(2)).text())
-        form.find('input[name=rentType]').val($(data.get(3)).text())
+        form.find('select[name=rentType]').val($(data.get(3)).text())
         form.find('input[name=rentFromTime]').val($(data.get(4)).text())
         form.find('input[name=rentToTime]').val($(data.get(5)).text())
         form.find('input[name=bookTime]').val(today())
         //弹窗
-        var mark = new MarkBox(600,300,'修改预约信息',form.get('0'))
+        var mark = new MarkBox(600, 300, '修改预约信息', form.get('0'))
         mark.init()
-        form.find('input[type=button]').unbind('click').click(function(){
+        form.find('input[type=button]').unbind('click').click(function () {
             $.ajax({
                 type: 'put',
                 url: '/books/book',
                 data: form.serialize(),
                 dataType: 'json',
-                success: function(result){
+                success: function (result) {
                     if (result.flag == 1) {
                         mark.close()
                         initList('/books')
@@ -102,32 +107,38 @@ $(function () {
                         alert('[error]:' + result.sqlMessage)
                     }
                 },
-                error: function(){
+                error: function () {
                     alert('error')
-                } 
+                }
             })
         })
     }
     //取消操作
-    function cancel(rentId,type){
+    function cancel(rentId, type) {
+        if (type == 'cancle') {
+            var res = confirm("是否取消该订单？")
+            if (res == false) {
+                return
+            }
+        }
         $.ajax({
             type: 'delete',
-            url: '/books/book/'+rentId,
+            url: '/books/book/' + rentId,
             dataType: 'json',
-            success: function(result){
-                if(result.flag==1){
+            success: function (result) {
+                if (result.flag == 1) {
                     initList('/books')
-                    if(type=='cancel')
+                    if (type == 'cancel')
                         alert('取消成功')
-                    else if(type=='delete'){
+                    else if (type == 'delete') {
                         alert('履约成功')
                     }
                 }
-                else{
+                else {
                     alert('[error]:' + result.sqlMessage)
                 }
             },
-            error: function(){
+            error: function () {
                 alert('error')
             }
         })

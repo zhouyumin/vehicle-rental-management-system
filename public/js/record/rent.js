@@ -16,7 +16,7 @@ $(function () {
 
                 //绑定操作事件
                 $('#dataList').find('tr').each(function (index, element) {
-                    const td = $(element).find('td:eq(6)')
+                    const td = $(element).find('td:eq(7)')
                     const rentId = $(element).find('td:eq(0)').text()
                     const clientId = $(element).find('td:eq(1)').text()
                     //绑定还车操作
@@ -65,24 +65,8 @@ $(function () {
             dataType: 'json',
             success: function (result) {
                 if (result.flag == 1) {
-                    $.ajax({
-                        // async: false,
-                        type: 'delete',
-                        url: '/records/record/' + rentId,
-                        dataType: 'json',
-                        success: function (result) {
-                            if (result.flag == 1) {
-                                initList('/records')
-                                alert('还车成功')
-                            }
-                            else {
-                                alert('[error]:' + result.sqlMessage)
-                            }
-                        },
-                        error: function () {
-                            alert('error')
-                        }
-                    })
+                    initList('/records')
+                    alert('还车成功')
                 }
                 else {
                     alert('[error]:' + result.sqlMessage)
@@ -102,7 +86,7 @@ $(function () {
         //填充表单
         var data = $(element).find('td')
         form.find('input[name=rentId]').val($(data.get(0)).text())
-        form.find('input[name=rentToTime]').val($(data.get(4)).text())
+        form.find('input[name=rentToTime]').val($(data.get(6)).text())
         //绑定提交表单数据
         form.find('input[type=button]').unbind('click').click(function () {
             $.ajax({

@@ -86,17 +86,18 @@ driverName varchar(50),
 driverSex varchar(20),
 driverAge int,
 driverPhone varchar(50),
-driverAddress varchar(50)
+driverAddress varchar(50),
+driverState varchar(20)
 );
 
 -- ----------------------------
 -- Records of driverMessage
 -- ----------------------------
-INSERT INTO driverMessage VALUES ('1111', '320100************', '王明', '男', 26, '133****0510', '江苏南京');
-INSERT INTO driverMessage VALUES ('1112', '320200************', '黄浩', '男', 27, '135****0517', '江苏无锡');
-INSERT INTO driverMessage VALUES ('1113', '320300************', '李雷', '男', 28, '172****7745', '江苏徐州');
-INSERT INTO driverMessage VALUES ('1114', '320400************', '杨星', '男', 29, '199****8976', '江苏常州');
-INSERT INTO driverMessage VALUES ('1115', '320500************', '张泽', '女', 27, '178****0796', '江苏苏州');
+INSERT INTO driverMessage VALUES ('1111', '320100************', '王明', '男', 26, '133****0510', '江苏南京','未接单');
+INSERT INTO driverMessage VALUES ('1112', '320200************', '黄浩', '男', 27, '135****0517', '江苏无锡','未接单');
+INSERT INTO driverMessage VALUES ('1113', '320300************', '李雷', '男', 28, '172****7745', '江苏徐州','未接单');
+INSERT INTO driverMessage VALUES ('1114', '320400************', '杨星', '男', 29, '199****8976', '江苏常州','未接单');
+INSERT INTO driverMessage VALUES ('1115', '320500************', '张泽', '女', 27, '178****0796', '江苏苏州','未接单');
 
 
 -- ----------------------------
@@ -105,22 +106,25 @@ INSERT INTO driverMessage VALUES ('1115', '320500************', '张泽', '女',
 drop table if exists rentRecord;
 create table rentRecord (
 rentId bigint primary key not null auto_increment,
-clientId varchar(50) references clientMessage(clientId),
-carId varchar(50) references carMessage(carId),
+clientId bigint,
+carId bigint,
+driverId bigint,
 rentType varchar(20),
 rentFromTime date,
-rentToTime date
+rentToTime date,
+foreign key (clientId) references clientMessage(clientId),
+foreign key (carId) references carMessage(carId),
+foreign key (driverId) references driverMessage(driverId)
 );
 
 -- ----------------------------
 -- Records of rentRecord
 -- ----------------------------
-insert into rentRecord values('11006','10001','11001','日租','2020-6-16','2020-6-20');
-insert into rentRecord values('11007','10002','11002','日租','2020-07-01','2020-07-05');
-insert into rentRecord values('11008','10003','11003','年租','2019-08-16','2020-08-16');
-insert into rentRecord values('11009','10004','11004','月租','2019-12-10','2020-06-10');
-insert into rentRecord values('11010','10005','11005','月租','2020-06-16','2020-07-16');
-
+insert into rentRecord values('11006','10001','11001','1111','日租','2020-6-16','2020-6-20');
+insert into rentRecord values('11007','10002','11002','1112','日租','2020-07-01','2020-07-05');
+insert into rentRecord values('11008','10003','11003','1113','年租','2019-08-16','2020-08-16');
+insert into rentRecord values('11009','10004','11004','1114','月租','2019-12-10','2020-06-10');
+insert into rentRecord values('11010','10005','11005','1115','月租','2020-06-16','2020-07-16');
 
 -- ----------------------------
 -- Table structure for returnRecord
@@ -128,23 +132,28 @@ insert into rentRecord values('11010','10005','11005','月租','2020-06-16','202
 drop table if exists returnRecord;
 create table returnRecord (
 rentId bigint primary key not null auto_increment,
-clientId varchar(50) references clientMessage(clientId),
-carId varchar(50) references carMessage(carId),
+clientId bigint,
+carId bigint,
+driverId bigint,
 rentType varchar(20),
 rentFromTime date,
 rentToTime date,
+rentTime int,
 returnTime date,
-rentMoney decimal(10,2)
+rentMoney decimal(10,2),
+foreign key (clientId) references clientMessage(clientId),
+foreign key (carId) references carMessage(carId),
+foreign key (driverId) references driverMessage(driverId)
 );
 
 -- ----------------------------
 -- Records of returnRecord
 -- ----------------------------
-insert into returnRecord values('11001','10001','11001','日租','2018-10-16','2018-10-20','2018-10-20',400.00);
-insert into returnRecord values('11002','10002','11002','日租','2019-10-16','2019-10-20','2019-10-20',320.00);
-insert into returnRecord values('11003','10003','11003','年租','2019-08-16','2020-08-16','2019-08-16',43920.00);
-insert into returnRecord values('11004','10004','11004','月租','2019-09-10','2019-11-10','2019-11-10',6710.00);
-insert into returnRecord values('11005','10005','11005','月租','2019-11-16','2019-12-16','2019-12-16',3600.00);
+insert into returnRecord values('11001','10001','11001','1111','日租','2018-10-16','2018-10-20',4,'2018-10-20',400.00);
+insert into returnRecord values('11002','10002','11002','1112','日租','2019-10-16','2019-10-20',4,'2019-10-20',320.00);
+insert into returnRecord values('11003','10003','11003','1113','年租','2019-08-16','2020-08-16',366,'2019-08-16',43920.00);
+insert into returnRecord values('11004','10004','11004','1114','月租','2019-09-10','2019-11-10',61,'2019-11-10',6710.00);
+insert into returnRecord values('11005','10005','11005','1115','月租','2019-11-16','2019-12-16',30,'2019-12-16',3600.00);
 
 
 -- ----------------------------
@@ -153,12 +162,14 @@ insert into returnRecord values('11005','10005','11005','月租','2019-11-16','2
 drop table if exists bookRecord;
 create table bookRecord (
 rentId bigint primary key not null auto_increment,
-clientId varchar(50) references clientMessage(clientId),
-carId varchar(50) references carMessage(carId),
+clientId bigint,
+carId bigint,
 rentType varchar(20),
 rentFromTime date,
 rentToTime date,
-bookTime date
+bookTime date,
+foreign key (clientId) references clientMessage(clientId),
+foreign key (carId) references carMessage(carId)
 );
 
 -- ----------------------------

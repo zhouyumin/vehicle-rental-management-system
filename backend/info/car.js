@@ -1,8 +1,13 @@
 const db = require('../db.js')
+const toFloat = require('../getFloatStr.js')
+
 //获得车辆信息表
 exports.getCars = (req, res)=>{
     const sql = 'select * from carMessage'
     db.base(sql,null,(result)=>{
+        result.forEach(element => {
+            element.carRentStandard = toFloat.getFloatStr(element.carRentStandard)
+        });
         res.json(result)
     })
 

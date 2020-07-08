@@ -17,20 +17,6 @@ exports.getRecordById=(req,res)=>{
     })
 }
 
-//还车时删除租用记录
-exports.deleteRecord = (req,res)=>{
-    let rentId = req.params.rentId
-    sql = 'delete from rentRecord where rentId = ?'
-    db.base(sql, rentId,(result)=>{
-        if(result.affectedRows == 1){
-            res.json({flag:1})
-        }
-        else{
-            res.json(result.error)
-        }
-    })
-}
-
 //续租订单
 exports.renewTime = (req,res)=>{
     let info = req.body

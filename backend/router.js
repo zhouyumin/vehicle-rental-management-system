@@ -62,8 +62,6 @@ router.put('/drivers/driver',driver.editDriver)
 router.get('/records',rent.getRecords)
 //查询订单信息
 router.get('/records/record/:rentId',rent.getRecordById)
-//还车时删除租用记录
-router.delete('/records/record/:rentId',rent.deleteRecord)
 //续租订单
 router.put('/records/record', rent.renewTime)
 //添加租用记录
@@ -83,7 +81,7 @@ router.get('/books',book.getBooks)
 //查询预约信息
 router.get('/books/book/:rentId', book.getBookById)
 //履约
-router.put('/books/book/:rentId', book.fulfillBook)
+router.put('/books/book/:rentId/:driverId', book.fulfillBook)
 //添加预约记录
 router.post('/books/book',book.addBook)
 //修改预约记录

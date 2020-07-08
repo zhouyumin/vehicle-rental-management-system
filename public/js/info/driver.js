@@ -16,7 +16,7 @@ $(function () {
 
                 //绑定操作事件
                 $('#dataList').find('tr').each(function (index, element) {
-                    const td = $(element).find('td:eq(7)')
+                    const td = $(element).find('td:eq(8)')
                     //绑定修改司机信息操作
                     td.find('a:eq(0)').click(function () {
                         editDriver(element)
@@ -95,10 +95,11 @@ $(function () {
         const driverId = $(data.get(0)).text()
         form.find('input[name=driverIdCard]').val($(data.get(1)).text())
         form.find('input[name=driverName]').val($(data.get(2)).text())
-        form.find('input[name=driverSex]').val($(data.get(3)).text())
+        form.find('select[name=driverSex]').val($(data.get(3)).text())
         form.find('input[name=driverAge]').val($(data.get(4)).text())
         form.find('input[name=driverPhone]').val($(data.get(5)).text())
         form.find('input[name=driverAddress]').val($(data.get(6)).text())
+        form.find('select[name=driverState]').val($(data.get(7)).text())
         //绑定提交表单数据
         form.find('input[type=button]').unbind('click').click(function () {
             $.ajax({

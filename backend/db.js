@@ -10,7 +10,8 @@ exports.base = (sql, data, callback) => {
         user: 'root', // 登录数据库的账号
         password: 'WSad13579/', // 登录数据库的密码
         database: 'vehicle_rental_management_system', // 数据库名称
-        dateStrings : true //解决时间格式
+        dateStrings : true, //解决时间格式
+        multipleStatements:true //执行多条语句
     });
     // 执行连接操作
     connection.connect();
