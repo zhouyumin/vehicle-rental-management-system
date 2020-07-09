@@ -1,3 +1,6 @@
+html {
+    height: 100%;
+}
 body {
     background-image: url("../images/background.jpg");
     background-repeat: no-repeat;
@@ -9,7 +12,8 @@ body {
 
 .head {
     text-align: center;
-    color: #fff;
+    background-color: #006179;
+    height: 80px;
     top: 0px;
     left: 0px;
     user-select: none;
@@ -17,14 +21,16 @@ body {
 
 .head h1{
     color: #f4f4f4;
-    margin: 21px;
+    margin: 0px;
+    padding-top: 19.2px;
 }
 
 .main {
-    position: relative;
+    position: absolute;
     width: 70%;
     height: 450px;
-    top: 73px;
+    top: 50%;
+    margin-top: -225px;
     left:15%;
     border-radius: 30px;
     background-color: rgba(0, 0, 0, 0.66);
@@ -35,7 +41,7 @@ body {
     position: relative;
     text-align: center;
     width: 20%;
-    top: 60px;
+    top: 35px;
     height: 440px;
     user-select: none;
 }
@@ -117,4 +123,16 @@ body {
 
 .container{
     display: none;
+}
+
+footer {
+    position: fixed;
+    color: lightgray;
+    font-size: 24px;
+    left: 50%;
+    margin-left: -79.215px;
+    bottom: 0px;
+}
+footer a{
+    color: lightgray;
 }

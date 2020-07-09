@@ -15,7 +15,7 @@ router.use(session({
     resave: true,
     saveUninitialized: false, // 是否保存未初始化的会话
     cookie: {
-        maxAge: 1000 * 60 * 3 * 60, // 设置 session 的有效时间，单位毫秒
+        maxAge: 1000 * 60 * 30, // 设置 session 的有效时间，单位毫秒
     }
 }))
 
@@ -26,7 +26,7 @@ router.use(bodyparser.urlencoded({ extended: true }))
 router.post('/login', service.checkLogin)
 
 // //判断session
-// router.use(service.checkSession)
+router.use(service.checkSession)
 
 //获得客户信息表
 router.get('/clients',client.getClients)
