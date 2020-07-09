@@ -6,6 +6,13 @@
     <title>车辆租赁管理子系统</title>
     <link rel="icon" type="image/png" href="images/icon.png">
     <link rel="stylesheet" type="text/css" href="css/index.css">
+    <script type="text/javascript" src="./js/jquery.js"></script>
+    <script type="text/javascript" src="./js/today.js"></script>
+    <script type="text/javascript" src="./js/dialog.js"></script>
+    <script type="text/javascript" src="./js/manage/book.js"></script>
+    <script type="text/javascript" src="./js/manage/rent.js"></script>
+    <script type="text/javascript" src="./js/manage/charge.js"></script>
+    <script type="text/javascript" src="./js/Chart.js"></script>
 </head>
 
 <body>
@@ -13,7 +20,7 @@
         <h1>车辆租赁管理子系统</h1>
     </div>
     <div class="main">
-        <div class="menu menu-left" >
+        <div class="menu menu-left">
             <h2>信息管理</h2>
             <div onclick="window.open('./info/client.html')">
                 客户信息
@@ -25,7 +32,7 @@
                 司机信息
             </div>
         </div>
-        <div class="menu menu-middle" >
+        <div class="menu menu-middle">
             <h2>记录管理</h2>
             <div onclick="window.open('./record/book.html')">
                 预约记录
@@ -39,17 +46,66 @@
         </div>
         <div class="menu menu-right">
             <h2>业务管理</h2>
-            <div onclick="window.open('./manage/book.html')">
+            <div id="book">
                 预约车辆
             </div>
-            <div onclick="window.open('./manage/rent.html')">
+            <div id="rent">
                 出租车辆
             </div>
-            <div onclick="window.open('./manage/charge.html')">
+            <div id="charge">
                 租金统计
             </div>
         </div>
     </div>
+
+    <form class="form" id="bookForm">
+        <label>客户编号：</label><input type="text" name="clientId"><br>
+        <label>车辆编号：</label><input type="text" name="carId"><br>
+        <label>租赁模式：</label>
+        <select name="rentType" style="margin-top: 6px; width: 166px; height: 24px; margin-left: -5px;">
+            <option>日租</option>
+            <option>月租</option>
+            <option>年租</option>
+        </select><br>
+        <label>预约租赁开始时间：</label><input type="date" name="rentFromTime" style="width: 160px;"><br>
+        <label>预约租赁结束时间：</label><input type="date" name="rentToTime" style="width: 160px;"><br>
+        <input type="text" hidden name="bookTime">
+        <input type="button" value="提交" style="margin-left: 145.67px; margin-top: 20px;">
+    </form>
+
+    <form class="form" id="rentForm">
+        <label>客户编号：</label><input type="text" name="clientId"><br>
+        <label>车辆编号：</label><input type="text" name="carId"><br>
+        <label>司机编号：</label><input type="text" name="driverId"><br>
+        <label>租赁模式：</label>
+        <select name="rentType" style="margin-top: 6px; width: 166px; height: 24px; margin-left: -5px;">
+            <option>日租</option>
+            <option>月租</option>
+            <option>年租</option>
+        </select><br>
+        <label>租赁开始时间：</label><input type="date" name="rentFromTime" style="width: 160px;"><br>
+        <label>租赁结束时间：</label><input type="date" name="rentToTime" style="width: 160px;"><br>
+        <input type="button" value="提交" style="margin-left: 129.67px; margin-top: 20px;">
+    </form>
+
+    <div class="container">
+        <br>
+        <div class="todayMoney">
+            <label>&nbsp;&nbsp;今日租金：</label>
+            <label id="rentMoney"></label>
+        </div>
+        <br>
+        <form id="timeInput">
+            <label>&nbsp;&nbsp;从</label> <input type="date" name="fromTime">
+            <label>到</label> <input type="date" name="toTime">
+            <label>总租金：</label><label id="sumMoney"></label>
+        </form>
+        <br>
+        <div class="graphic">
+            <canvas id='chart'></canvas>
+        </div>
+    </div>
+
 </body>
 
 </html>

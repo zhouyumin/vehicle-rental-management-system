@@ -1,7 +1,13 @@
 $(function () {
     const form = $('#rentForm')
-    form.find('input[name=rentFromTime]').val(today())
-    form.find('input[name=rentToTime]').val(today())
+    //绑定出租车辆
+    $('#rent').click(function(){
+        var mark = new MarkBox(600,400,'出租车辆',form.get(0))
+        form.get(0).reset()
+        form.find('input[name=rentFromTime]').val(today())
+        form.find('input[name=rentToTime]').val(today())
+        mark.init()
+    })
     //绑定提交
     form.find('input[type=button]').click(function () {
         const clientId = form.find('input[name=clientId]').val()

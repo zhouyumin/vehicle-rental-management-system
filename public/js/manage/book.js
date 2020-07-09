@@ -1,8 +1,14 @@
 $(function () {
     const form = $('#bookForm')
-    form.find('input[name=rentFromTime]').val(today())
-    form.find('input[name=rentToTime]').val(today())
-    form.find('input[name=bookTime]').val(today())
+    //绑定预约
+    $('#book').click(function(){
+        var mark = new MarkBox(600,400,'预约车辆',form.get(0))
+        form.get(0).reset()
+        form.find('input[name=rentFromTime]').val(today())
+        form.find('input[name=rentToTime]').val(today())
+        form.find('input[name=bookTime]').val(today())
+        mark.init()
+    })
     //绑定提交
     form.find('input[type=button]').click(function () {
         const clientId = form.find('input[name=clientId]').val()

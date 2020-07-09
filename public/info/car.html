@@ -24,10 +24,14 @@
         {{/each}}
     </script>
     <style>
+        #addCarForm {
+            margin-left: -122.87px;
+            margin-top: -78.2px;
+        }
         #addCarForm label {
             text-align: center;
             display: inline-block;
-            width: 112px;
+            width: 80px;
         }
     </style>
 </head>
@@ -48,7 +52,7 @@
                     <th>车辆编号</th>
                     <th>车型</th>
                     <th>车名</th>
-                    <th>车辆购买时间</th>
+                    <th>购买时间</th>
                     <th>租金标准</th>
                     <th>租用状态</th>
                     <th>操作</th>
@@ -62,15 +66,15 @@
     <form class="form" id="addCarForm">
         <label>车型：</label><input type="text" name="carType"><br>
         <label>车名：</label><input type="text" name="carName"><br>
-        <label>车辆购买时间：</label><input type="date" name="carBuyTime" style="width: 160px;"><br>
+        <label>购买时间：</label><input type="date" name="carBuyTime" style="width: 160px;"><br>
         <label>租金标准：</label><input type="text" name="carRentStandard" onkeyup="value=value.replace(/[^\d.]/g,'')" placeholder="只允许输入数字和小数点"><span style="margin-left: -6px; color: #777;">（元/天）</span><br>
         <label>租用状态：</label>
-        <select name="carState" style="margin-top: 6px; width: 166px; height: 24px; margin-left: -5px;">
+        <select name="carState" style="margin-top: 6px; width: 166px; height: 22px; margin-left: -5px;">
             <option>可出租</option>
             <option>已租用</option>
             <option>故障</option>
         </select><br>
-        <input type="button" value="提交" style="margin-left: 120px; margin-top: 25px;">
+        <input type="button" value="提交" style="margin-left: 113.67px; margin-top: 20px;">
     </form>
 </body>
 

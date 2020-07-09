@@ -24,10 +24,14 @@
         {{/each}}
     </script>
     <style>
+        #addClientForm {
+            margin-top: -93px;
+            margin-left: -114.4px;
+        }
         #addClientForm label {
             text-align: center;
             display: inline-block;
-            width: 80px;
+            width: 64px;
         }
     </style>
 </head>
@@ -64,7 +68,7 @@
         <label>身份证：</label><input type="text" name="clientIdCard"><br>
         <label>姓名：</label><input type="text" name="clientName"><br>
         <label>性别：</label>
-        <select name="clientSex" style="margin-top: 6px; width: 166px; height: 24px; margin-left: -5px;">
+        <select name="clientSex" style="margin-top: 6px; width: 164.8px; height: 22px; margin-left: -5px;">
             <option>男</option>
             <option>女</option>
             <option>其他</option>
@@ -72,7 +76,7 @@
         <label>年龄：</label><input type="text" name="clientAge" onkeyup="value=value.replace(/[^\d]/g,'')" placeholder="只允许输入数字"><br>
         <label>电话：</label><input type="text" name="clientPhone"><br>
         <label>地址：</label><input type="text" name="clientAddress"><br>
-        <input type="button" value="提交" style="margin-left: 120px; margin-top: 25px;">
+        <input type="button" value="提交" style="margin-left: 105.2px; margin-top: 20px;">
     </form>
 </body>
 

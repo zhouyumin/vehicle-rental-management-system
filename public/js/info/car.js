@@ -96,7 +96,7 @@ $(function () {
         form.find('input[name=carType]').val($(data.get(1)).text())
         form.find('input[name=carName]').val($(data.get(2)).text())
         form.find('input[name=carBuyTime]').val($(data.get(3)).text())
-        form.find('input[name=carRentStandard]').val($(data.get(4)).text())
+        form.find('input[name=carRentStandard]').val($(data.get(4)).text().replace('元/天',''))
         form.find('select[name=carState]').val($(data.get(5)).text())
         //绑定提交表单数据
         form.find('input[type=button]').unbind('click').click(function () {

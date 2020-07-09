@@ -80,3 +80,41 @@ body {
     background-color: #2ed5;
     color: #2ed573;
 }
+
+.form {
+    display: none;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+}
+
+.form label, .form input {
+    margin-top: 6px;
+}
+
+.form label {
+    display: inline-block;
+    text-align: center;
+}
+
+#bookForm {
+    margin-left: -157.87px;
+    margin-top: -79.5px;
+}
+
+#bookForm label {
+    width: 144px;
+}
+
+#rentForm {
+    margin-left: -138.87px;
+    margin-top: -94.4px;
+}
+
+#rentForm label {
+    width: 112px;
+}
+
+.container{
+    display: none;
+}
