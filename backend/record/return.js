@@ -41,8 +41,8 @@ exports.addReturn = (req, res) => {
 //查询租金
 exports.getMoney = (req, res) => {
     let info = req.params
-    const sql = 'select returnTime,rentMoney from returnRecord\
-    where returnTime between ? and ? order by returnTime'
+    const sql = 'select returnTime,sum(rentMoney) as rentMoney from returnRecord\
+    where returnTime between ? and ? group by returnTime order by returnTime'
     db.base(sql, [info.rentFromTime,info.rentToTime], (result) => {
         result.forEach(element => {
             element.rentMoney = toFloat.getFloatStr(element.rentMoney)

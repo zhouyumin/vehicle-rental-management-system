@@ -33,11 +33,11 @@ INSERT INTO Admin VALUES ('test', 'test');
 DROP TABLE IF EXISTS carMessage;
 CREATE TABLE carMessage  (
   carId bigint  PRIMARY KEY NOT NULL auto_increment,
-  carType varchar(50),
-  carName varchar(50),
-  carBuyTime date,
-  carRentStandard int(0),
-  carState varchar(20)
+  carType varchar(10) not null,
+  carName varchar(10) not null,
+  carBuyTime date not null,
+  carRentStandard decimal(10,2) not null,
+  carState varchar(10) not null
 );
 
 -- ----------------------------
@@ -57,12 +57,12 @@ INSERT INTO carMessage VALUES ('11006', '三轮车', '宗申', '2020-05-12', 120
 DROP TABLE IF EXISTS clientMessage;
 CREATE TABLE clientMessage  (
   clientId bigint  PRIMARY KEY NOT NULL auto_increment,
-  clientIdCard varchar(50),
-  clientName varchar(50),
-  clientSex varchar(20),
+  clientIdCard varchar(20) not null,
+  clientName varchar(10) not null,
+  clientSex varchar(5) not null,
   clientAge int,
-  clientPhone varchar(50),
-  clientAddress varchar(50)
+  clientPhone varchar(20) not null,
+  clientAddress varchar(50) not null
 );
 
 -- ----------------------------
@@ -81,13 +81,13 @@ INSERT INTO clientMessage VALUES ('10005', '320500************', '周欣', '女'
 drop table if exists driverMessage;
 create table driverMessage (
 driverId bigint primary key not null auto_increment,
-driverIdCard varchar(50),
-driverName varchar(50),
-driverSex varchar(20),
-driverAge int,
-driverPhone varchar(50),
-driverAddress varchar(50),
-driverState varchar(20)
+driverIdCard varchar(20) not null,
+driverName varchar(10) not null,
+driverSex varchar(5) not null,
+driverAge int not null,
+driverPhone varchar(20) not null,
+driverAddress varchar(50) not null,
+driverState varchar(10) not null
 );
 
 -- ----------------------------
@@ -106,12 +106,12 @@ INSERT INTO driverMessage VALUES ('1115', '320500************', '张泽', '女',
 drop table if exists rentRecord;
 create table rentRecord (
 rentId bigint primary key not null auto_increment,
-clientId bigint,
-carId bigint,
+clientId bigint not null,
+carId bigint not null,
 driverId bigint,
-rentType varchar(20),
-rentFromTime date,
-rentToTime date,
+rentType varchar(5) not null,
+rentFromTime date not null,
+rentToTime date not null,
 foreign key (clientId) references clientMessage(clientId),
 foreign key (carId) references carMessage(carId),
 foreign key (driverId) references driverMessage(driverId)
@@ -132,15 +132,15 @@ insert into rentRecord values('11010','10005','11005','1115','月租','2020-06-1
 drop table if exists returnRecord;
 create table returnRecord (
 rentId bigint primary key not null auto_increment,
-clientId bigint,
-carId bigint,
+clientId bigint not null,
+carId bigint not null,
 driverId bigint,
-rentType varchar(20),
-rentFromTime date,
-rentToTime date,
-rentTime int,
-returnTime date,
-rentMoney decimal(10,2),
+rentType varchar(5) not null,
+rentFromTime date not null,
+rentToTime date not null,
+rentTime int not null,
+returnTime date not null,
+rentMoney decimal(10,2) not null,
 foreign key (clientId) references clientMessage(clientId),
 foreign key (carId) references carMessage(carId),
 foreign key (driverId) references driverMessage(driverId)
@@ -162,12 +162,12 @@ insert into returnRecord values('11005','10005','11005','1115','月租','2019-11
 drop table if exists bookRecord;
 create table bookRecord (
 rentId bigint primary key not null auto_increment,
-clientId bigint,
-carId bigint,
-rentType varchar(20),
-rentFromTime date,
-rentToTime date,
-bookTime date,
+clientId bigint not null,
+carId bigint not null,
+rentType varchar(5) not null,
+rentFromTime date not null,
+rentToTime date not null,
+bookTime date not null,
 foreign key (clientId) references clientMessage(clientId),
 foreign key (carId) references carMessage(carId)
 );

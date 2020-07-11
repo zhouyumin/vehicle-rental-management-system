@@ -23,6 +23,7 @@ exports.fulfillBook=(req,res)=>{
     let sql = `insert into rentRecord select rentId, clientId, \
     carId, ?, rentType, rentFromTime, rentToTime from bookRecord where rentId = ?;\
     update driverMessage set driverState='已接单' where driverId=?`
+    info.driverId=='null'?info.driverId=null:null
     db.base(sql ,[info.driverId,info.rentId,info.driverId],(result)=>{
         if(result[0].affectedRows == 1){
             res.json({flag:1})

@@ -54,11 +54,11 @@ $(function () {
         }
     }
     function fulfill(rentId) {
-        var driverId = prompt('请分配司机，输入司机编号')
-        if(driverId==null||driverId==''){
-            alert('司机未分配，无法履行订单')
+        var driverId = prompt('请分配司机，输入司机编号，若不分配司机可不输入')
+        if (driverId == null) {
             return
         }
+        driverId == '' ? driverId = null : null
         $.ajax({
             type: 'put',
             url: '/books/book/' + rentId + '/' + driverId,
