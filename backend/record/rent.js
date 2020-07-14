@@ -34,6 +34,9 @@ exports.renewTime = (req,res)=>{
 //添加订单
 exports.addRecord=(req,res)=>{
     let info = req.body
+    if (info.driverId==''){
+        info.driverId=null
+    }
     let sql = 'insert into rentRecord set ?'
     db.base(sql , info,(result)=>{
         if(result.affectedRows == 1){

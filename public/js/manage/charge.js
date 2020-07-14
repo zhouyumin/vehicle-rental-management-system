@@ -4,8 +4,8 @@ $(function () {
     var fromTime = form.find('input[name=fromTime]')
     var toTime = form.find('input[name=toTime]')
     //绑定租金统计
-    var mark = new MarkBox(600, 450, '租金统计', $('div.container').get(0))
     $('#charge').click(function () {
+        var mark = new MarkBox(600, 450, '租金统计', $('div.container').get(0))
         mark.init()
         fromTime.val(today())
         toTime.val(today())
