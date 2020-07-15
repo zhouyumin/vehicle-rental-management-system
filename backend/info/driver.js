@@ -8,6 +8,16 @@ exports.getDrivers = (req, res)=>{
 
 }
 
+//获得司机驾驶记录
+exports.getDrive = (req, res)=>{
+    let info = req.params.driverId
+    const sql = 'select * from drive where driverId = ?'
+    db.base(sql,info,(result)=>{
+        res.json(result)
+    })
+
+}
+
 //添加司机信息
 exports.addDriver = (req,res)=>{
     let info = req.body

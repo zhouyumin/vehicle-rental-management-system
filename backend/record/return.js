@@ -27,8 +27,11 @@ exports.addReturn = (req, res) => {
     let info = req.body
     let sql = "insert into returnRecord select *,datediff(rentToTime,rentFromTime),?, datediff(rentToTime,rentFromTime)* \
     (select carRentStandard from carMessage where carMessage.carId=rentRecord.carId) \
-    from rentRecord where rentId = ?;delete from rentRecord where rentId = ?"
-    db.base(sql, [info.time, info.rentId, info.rentId], (result) => {
+    from rentRecord where rentId = ?;update driverMessage set driverState='未接单'\
+    where driverId = (select driverId from rentRecord where rentId=?);\
+    update carMessage set carState = '可出租' where carId = (select carId from rentRecord where rentId=?);\
+    delete from rentRecord where rentId = ?;"
+    db.base(sql, [info.time, info.rentId, info.rentId,info.rentId,info.rentId], (result) => {
         if (result[0].affectedRows == 1) {
             res.json({ flag: 1 })
         }

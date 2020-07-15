@@ -22,9 +22,10 @@ exports.fulfillBook=(req,res)=>{
     let info = req.params
     let sql = `insert into rentRecord select rentId, clientId, \
     carId, ?, rentType, rentFromTime, rentToTime from bookRecord where rentId = ?;\
-    update driverMessage set driverState='已接单' where driverId=?`
+    update driverMessage set driverState='已接单' where driverId=?;\
+    update carMessage set carState='已租用' where carId=(select carId from bookRecord where rentId=?)`
     info.driverId=='null'?info.driverId=null:null
-    db.base(sql ,[info.driverId,info.rentId,info.driverId],(result)=>{
+    db.base(sql ,[info.driverId,info.rentId,info.driverId,info.rentId],(result)=>{
         if(result[0].affectedRows == 1){
             res.json({flag:1})
         }

@@ -42,14 +42,14 @@ body{
     width: 100px;
 }
 
-.content table {
+table {
     width: 100%;
     text-align: center;
     border-bottom: #2ed573 1px solid;
     border-right: #2ed573 1px solid;
 }
 
-.content td, .content th {
+td, th {
     height: 40px;
     line-height: 40px;
     border-top: #2ed573 1px solid;

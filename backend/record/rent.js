@@ -37,13 +37,14 @@ exports.addRecord=(req,res)=>{
     if (info.driverId==''){
         info.driverId=null
     }
-    let sql = 'insert into rentRecord set ?'
-    db.base(sql , info,(result)=>{
-        if(result.affectedRows == 1){
+    let sql = `insert into rentRecord set ?;update carMessage set carState='已租用' where carId=?;\
+    update driverMessage set driverState='已接单' where driverId=?;`
+    db.base(sql , [info,info.carId,info.driverId],(result)=>{
+        if(result[0].affectedRows == 1){
             res.json({flag:1})
         }
         else{
-            res.json(result.error)
+            res.json(result[0].error)
         }
     })
 }

@@ -26,7 +26,7 @@ router.use(bodyparser.urlencoded({ extended: true }))
 router.post('/login', service.checkLogin)
 
 // //判断session
-router.use(service.checkSession)
+// router.use(service.checkSession)
 
 //获得客户信息表
 router.get('/clients',client.getClients)
@@ -51,6 +51,8 @@ router.put('/cars/car',car.editCar)
 
 //获得司机信息表
 router.get('/drivers',driver.getDrivers)
+//获得司机驾驶记录
+router.get('/drivers/drive/:driverId',driver.getDrive)
 //添加司机信息
 router.post('/drivers/driver',driver.addDriver)
 //查询司机信息

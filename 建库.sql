@@ -43,12 +43,16 @@ CREATE TABLE carMessage  (
 -- ----------------------------
 -- Records of carMessage
 -- ----------------------------
-INSERT INTO carMessage VALUES ('11001', '中型车', '奥迪', '2018-10-15', 100, '已租用');
-INSERT INTO carMessage VALUES ('11002', '小型车', '大众', '2019-10-15', 80, '已租用');
-INSERT INTO carMessage VALUES ('11003', '大型车', '五菱宏光', '2019-08-12', 120, '已租用');
-INSERT INTO carMessage VALUES ('11004', '紧凑型车', '丰田', '2019-09-12', 110, '已租用');
-INSERT INTO carMessage VALUES ('11005', '大型车', '马自达', '2019-11-12', 120, '已租用');
-INSERT INTO carMessage VALUES ('11006', '三轮车', '宗申', '2020-05-12', 120, '已租用');
+INSERT INTO carMessage VALUES ('11001', '中型车', '奥迪', '2018-10-15', 100, '可出租');
+INSERT INTO carMessage VALUES ('11002', '小型车', '大众', '2019-10-15', 80, '可出租');
+INSERT INTO carMessage VALUES ('11003', '大型车', '五菱宏光', '2019-08-12', 120, '可出租');
+INSERT INTO carMessage VALUES ('11004', '紧凑型车', '丰田', '2019-09-12', 110, '可出租');
+INSERT INTO carMessage VALUES ('11005', '大型车', '马自达', '2019-11-12', 120, '可出租');
+INSERT INTO carMessage VALUES ('11006', '小型车', '雪佛兰', '2020-05-13', 110, '已租用');
+INSERT INTO carMessage VALUES ('11007', '商务车', '现代', '2020-05-11', 100, '已租用');
+INSERT INTO carMessage VALUES ('11008', '商务车', '别克', '2020-05-09', 115, '已租用');
+INSERT INTO carMessage VALUES ('11009', '小型车', '奔驰', '2020-05-01', 100, '已租用');
+INSERT INTO carMessage VALUES ('11010', '中型车', '路虎', '2020-05-13', 90, '已租用');
 
 
 -- ----------------------------
@@ -120,11 +124,11 @@ foreign key (driverId) references driverMessage(driverId)
 -- ----------------------------
 -- Records of rentRecord
 -- ----------------------------
-insert into rentRecord values('11006','10001','11001','1111','日租','2020-6-16','2020-6-20');
-insert into rentRecord values('11007','10002','11002','1112','日租','2020-07-01','2020-07-05');
-insert into rentRecord values('11008','10003','11003','1113','年租','2019-08-16','2020-08-16');
-insert into rentRecord values('11009','10004','11004','1114','月租','2019-12-10','2020-06-10');
-insert into rentRecord values('11010','10005','11005','1115','月租','2020-06-16','2020-07-16');
+insert into rentRecord values('11006','10001','11006','1111','日租','2020-6-16','2020-6-20');
+insert into rentRecord values('11007','10002','11007','1112','日租','2020-07-01','2020-07-05');
+insert into rentRecord values('11008','10003','11008','1113','年租','2019-08-16','2020-08-16');
+insert into rentRecord values('11009','10004','11009','1114','月租','2019-12-10','2020-06-10');
+insert into rentRecord values('11010','10005','11010','1115','月租','2020-06-16','2020-07-16');
 
 -- ----------------------------
 -- Table structure for returnRecord
@@ -154,6 +158,28 @@ insert into returnRecord values('11002','10002','11002','1112','日租','2019-10
 insert into returnRecord values('11003','10003','11003','1113','年租','2019-08-16','2020-08-16',366,'2019-08-16',43920.00);
 insert into returnRecord values('11004','10004','11004','1114','月租','2019-09-10','2019-11-10',61,'2019-11-10',6710.00);
 insert into returnRecord values('11005','10005','11005','1115','月租','2019-11-16','2019-12-16',30,'2019-12-16',3600.00);
+
+-- ----------------------------
+-- Table structure for drive
+-- ----------------------------
+drop table if exists drive;
+create table drive (
+driverId bigint,
+carId bigint not null,
+driveFromTime date not null,
+driveToTime date not null,
+foreign key (driverId) references driverMessage(driverId),
+foreign key (carId) references carMessage(carId)
+);
+
+-- ----------------------------
+-- Records of drive
+-- ----------------------------
+insert into drive values('1111','11001','2018-10-16','2018-10-20');
+insert into drive values('1112','11002','2019-10-16','2019-10-20');
+insert into drive values('1113','11003','2019-08-16','2020-08-16');
+insert into drive values('1114','11004','2019-09-10','2019-11-10');
+insert into drive values('1115','11005','2019-11-16','2019-12-16');
 
 
 -- ----------------------------

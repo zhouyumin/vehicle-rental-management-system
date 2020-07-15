@@ -22,6 +22,30 @@ $(function () {
                         editDriver(element)
                     })
                 })
+                //绑定查看驾驶记录
+                $('#dataList').find('tr').each(function (index, element) {
+                    const td = $(element).find('td:eq(8)')
+                    const driverId = $(element).find('td:eq(0)').text()
+                    //绑定修改司机信息操作
+                    td.find('a:eq(1)').click(function () {
+                        $.ajax({
+                            type: 'get',
+                            url: '/drivers/drive/'+driverId,
+                            dataType: 'json',
+                            success: function(data){
+                                //渲染数据列表
+                                var html = template('driveTemplate',{list:data})
+                                //渲染模板
+                                $('#driveList').html(html)
+                                var mark = new MarkBox(600,400,'司机'+driverId+'的驾驶记录',$('#drive').get(0))
+                                mark.init()
+                            },
+                            error: function(){
+                                alert('error')
+                            }
+                        })
+                    })
+                })
 
                 //绑定添加司机信息操作
                 addDriver()
