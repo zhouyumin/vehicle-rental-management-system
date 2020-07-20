@@ -13,16 +13,39 @@
 
 <body>
     <div class="main">
-        <form class="login">
-            <label>账号：</label>
-            <input type="text" name="username">
-            <br><br>
-            <label>密码：</label>
-            <input type="password" name="password">
-            <br><br>
-            <button type="button" onclick="login()">登入</button>
-            <button type="button" onclick="register()">注册</button>
-        </form>
+        <div class="sign-in">
+            <h1>登入</h1>
+            <form class="login">
+                <input type="text" name="username" placeholder="用户名：">
+                <br><br>
+                <input type="password" name="password" placeholder="密码："><br>
+                <a href="javascript:alert('联系管理员重置密码')">忘记密码?</a><br>
+                <button type="button" onclick="login()">登入</button>
+                <button type="button" onclick="register()">注册</button>
+            </form>
+        </div>
+
+        <div class="about">
+            <h1>说明</h1>
+            <h2>一、系统简介</h2>
+            <p>
+                此系统为车辆租赁管理子系统<br>
+                供车辆租赁公司信息管理员使用
+            </p>
+            <h2>二、系统使用</h2>
+            <p>
+                登入后按照需求和界面提示进行操作
+            </p>
+            <h2>三、系统维护</h2>
+            <p>
+                请联系公司系统管理员及开发人员
+            </p>
+            <h2>四、联系作者</h2>
+            <p>
+                请去GitHub提issue <a href="https://github.com/zhouyumin/vehicle-rental-management-system"
+                    target="_blank">[跳转链接]</a>
+            </p>
+        </div>
     </div>
 </body>
 

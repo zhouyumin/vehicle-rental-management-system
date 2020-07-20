@@ -1,45 +1,77 @@
+html {
+    height: 100%;
+}
+
 body {
-    background-image: url("../images/bg.jpg");
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: 100% 100%;
-    background-attachment: fixed;
-    text-align: center;
+    background-image: linear-gradient(-20deg, #b721ff 0%, #21d4fd 100%);
 }
 
 .main {
+    user-select: none;
+    background-color: #ffffff99;
+    border-radius: 10px;
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
     position: absolute;
-    width: 400px;
-    height: 160px;
+    overflow: hidden;
     left: 50%;
     top: 50%;
-    margin-left: -200px;
-    margin-top: -100px;
-    border-radius: 30px;
-    background: rgba(255, 255, 255, 0.6);
-    box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
-    overflow: hidden;
+    width: 700px;
+    height: 480px;
+    margin-left: -350px;
+    margin-top: -240px;
+}
+
+.sign-in{
+    text-align: center;
+    position: absolute;
+    left: 0px;
+    top: 15%;
+    width: 50%;
+}
+
+.sign-in a {
+    display: inline-block;
+    color: #333;
+    margin: 10px 0px 10px 0px;
+}
+
+.about {
+    text-align: center;
+    position: absolute;
+    right: 0px;
+    width: 50%;
+    height: 100%;
+    background-color: #f4f4f433;
 }
 
 .login {
-    padding: 20px;
+    position: relative;
+    top: 20%;
+}
+
+.login input {
+    background-color: #eee;
+    outline: none;
+    border: none;
+    border-radius: 20px;
+    padding: 12px 15px;
+    width: 80%;
 }
 
 button {
-    width: 60px;
-    height: 30px;
-    margin-left: 20px;
+    width: 90px;
+    height: 40px;
+    margin-left: 10px;
     margin-right: 20px;
-    border-radius: 50%;
+    border-radius: 20px;
     border: none;
-    background: linear-gradient(90deg, rgba(138, 143, 255, 0.75), rgba(216, 174, 255, 0.75));
+    background: linear-gradient(90deg, #9090ff, #7070ff);
     outline: none;
-    box-shadow: 0 0 8px #8a8fff;
     cursor: pointer;
+    transition-duration: 100ms;
 }
 
 button:hover {
-    border-radius: 3rem;
-    cursor: pointer;
-    color: rgba(94, 36, 36, 0.6);
+    background: linear-gradient(90deg, #7070ff, #9090ff);
+    color: #b721ff;
 }
