@@ -26,7 +26,7 @@ router.use(bodyparser.urlencoded({ extended: true }))
 router.post('/login', service.checkLogin)
 
 // //判断session
-// router.use(service.checkSession)
+router.use(service.checkSession)
 
 //获得客户信息表
 router.get('/clients',client.getClients)
