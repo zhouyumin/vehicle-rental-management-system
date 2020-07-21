@@ -1,7 +1,7 @@
 /*
     封装操作数据库的通用api
 */
-const mysql = require('mysql');
+const mysql = require('mysql'); //引入mysql模块
 
 exports.base = (sql, data, callback) => {
     // 创建数据库连接
@@ -11,7 +11,7 @@ exports.base = (sql, data, callback) => {
         password: 'WSad13579/', // 登录数据库的密码
         database: 'vehicle_rental_management_system', // 数据库名称
         dateStrings : true, //解决时间格式
-        multipleStatements:true //执行多条语句
+        multipleStatements:true //可一次性执行多条语句
     });
     // 执行连接操作
     connection.connect();

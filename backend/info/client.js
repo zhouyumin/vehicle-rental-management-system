@@ -21,6 +21,7 @@ exports.addClient = (req,res)=>{
         }
     })
 }
+
 //查询客户信息
 exports.getClientByName=(req,res)=>{
     let data = req.params.clientName

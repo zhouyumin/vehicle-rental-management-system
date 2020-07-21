@@ -115,7 +115,8 @@ $(function () {
     }
     //取消操作
     function cancel(rentId, type) {
-        if (type == 'cancle') {
+        console.log(type)
+        if (type == 'cancel') {
             var res = confirm("是否取消该订单？")
             if (res == false) {
                 return

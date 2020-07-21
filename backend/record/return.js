@@ -52,5 +52,4 @@ exports.getMoney = (req, res) => {
         });
         res.json(result)
     })
-
 }
